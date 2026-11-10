@@ -1,4 +1,4 @@
-# weonit
+# WEON
 
 ## 커밋 규칙
 

@@ -4,6 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WEON</title>
+
+  <!-- 영문: Google Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400..700;1,400..700&display=swap">
+  <!-- 한글: Pretendard (dynamic subset) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+
+  <style>
+    /* Google Sans에는 한글 글리프가 없어서, 한글은 자동으로 Pretendard로 넘어갑니다. */
+    :root {
+      --font-sans: "Google Sans", "Pretendard Variable", Pretendard, -apple-system,
+        BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR",
+        "Malgun Gothic", sans-serif;
+    }
+    html, body, button, input, select, textarea {
+      font-family: var(--font-sans);
+    }
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
 </head>
 <body>
   <h1>WEON</h1>

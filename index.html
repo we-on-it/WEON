@@ -28,8 +28,124 @@
       -moz-osx-font-smoothing: grayscale;
     }
   </style>
+  <!-- TEMP-HOME:START (임시 홈 스타일 — 지울 때 이 줄 삭제) -->
+  <link rel="stylesheet" href="temp-home/home.css">
+  <!-- TEMP-HOME:END -->
 </head>
 <body>
+  <!-- TEMP-HOME:START — 임시 홈 뷰 (Figma 189:2036). 지울 때 START~END 블록 + temp-home/ 폴더 삭제 -->
+  <div class="th">
+    <aside class="th-side">
+      <div>
+        <div class="th-logo"><img src="temp-home/assets/logo.svg" alt="WEON"></div>
+        <nav class="th-nav">
+          <a href="#" class="is-active"><img src="temp-home/assets/home.svg" alt="">홈</a>
+          <a href="#"><svg viewBox="0 0 24 24" fill="#8e95a2"><circle cx="8.5" cy="8" r="3.2"/><circle cx="16.5" cy="8.5" r="2.6"/><path d="M2.5 18.2c0-2.9 2.7-5 6-5s6 2.1 6 5c0 .8-.5 1.3-1.3 1.3H3.8c-.8 0-1.3-.5-1.3-1.3zM15.6 19.5c.3-.4.4-.8.4-1.3 0-1.7-.7-3.2-1.9-4.3.8-.4 1.6-.6 2.5-.6 2.8 0 4.9 1.8 4.9 4.2 0 1.2-.6 2-1.8 2z"/></svg>팀 프로젝트 관리</a>
+          <a href="#"><img src="temp-home/assets/task.svg" alt="">나의 태스크 관리</a>
+        </nav>
+      </div>
+      <div class="th-me">
+        <img class="avatar" src="temp-home/assets/avatar.jpg" alt="">
+        <p>MIDU</p>
+        <button type="button" aria-label="설정"><img src="temp-home/assets/settings.svg" alt=""></button>
+      </div>
+    </aside>
+
+    <main class="th-main">
+      <header class="th-greet">
+        <h1>MIDU 님! 좋은 아침입니다.</h1>
+        <p>오늘 3개의 일정이 있으시네요.</p>
+      </header>
+
+      <div class="th-stack">
+        <!-- 캘린더 -->
+        <section class="th-card th-cal">
+          <div class="th-card-head">
+            <div class="th-cal-left">
+              <h2 class="th-h2">2026년 11월 2주차</h2>
+              <button type="button" class="th-circle" aria-label="이전 주"><img src="temp-home/assets/prev.svg" alt=""></button>
+              <button type="button" class="th-circle" aria-label="다음 주"><img src="temp-home/assets/next.svg" alt=""></button>
+            </div>
+            <div class="th-cal-right">
+              <div class="th-seg"><button type="button">월간</button><button type="button" class="is-on">주간</button></div>
+              <button type="button" class="th-btn-dark">+ 일정 추가</button>
+            </div>
+          </div>
+          <div class="th-week">
+            <div class="th-day sun"><div class="th-date"><span>일</span><span>8</span></div></div>
+            <div class="th-day"><div class="th-date"><span>월</span><span>9</span></div>
+              <div class="th-ev"><span class="th-pill t-jjw">졸준위</span><div class="th-ev-row"><b>전체 회의</b><span>23:00</span></div></div>
+            </div>
+            <div class="th-day"><div class="th-date"><span>화</span><span>10</span></div></div>
+            <div class="th-day today"><div class="th-date"><span>오늘</span><span>11</span></div>
+              <div class="th-events">
+                <div class="th-ev"><span class="th-pill t-midu">MIDU</span><div class="th-ev-row"><b>회의</b><span>11:00</span></div></div>
+                <div class="th-ev"><span class="th-pill t-cap">캡스톤</span><div class="th-ev-row"><b>회의</b><span>18:00</span></div></div>
+                <div class="th-ev"><span class="th-pill t-midu">MIDU</span><div class="th-ev-row"><b>제출 자료 마감</b><span>19:00</span></div></div>
+              </div>
+            </div>
+            <div class="th-day"><div class="th-date"><span>목</span><span>12</span></div>
+              <div class="th-ev"><span class="th-pill t-jjw">졸준위</span><div class="th-ev-row"><b>디자인 회의</b><span>23:00</span></div></div>
+            </div>
+            <div class="th-day"><div class="th-date"><span>금</span><span>13</span></div>
+              <div class="th-allday"><span>MIDU</span><b>중간 발표일</b></div>
+            </div>
+            <div class="th-day sat"><div class="th-date"><span>토</span><span>14</span></div></div>
+          </div>
+        </section>
+
+        <div class="th-row">
+          <!-- 알림 -->
+          <section class="th-card th-noti">
+            <div class="th-card-head"><h2 class="th-h2">알림</h2><img class="th-go" src="temp-home/assets/arrow-up-right.svg" alt=""></div>
+            <ul>
+              <li><span class="th-ava unread t-midu" style="color:#2a2a2f">M</span><p><b>MIDU</b>에서 자료 보고 요청이 들어왔어요</p></li>
+              <li><span class="th-ava unread t-midu" style="color:#2a2a2f">M</span><p><b>한서윤(MIDU)</b>님이 피드백을 남겼어요</p></li>
+              <li><span class="th-ava" style="background:#d9f6e9">캡</span><p><b>캡스톤</b>의 프로토타입 단계가 마무리되었어요</p></li>
+            </ul>
+          </section>
+
+          <!-- 나의 할 일 -->
+          <section class="th-card th-todo">
+            <div class="th-card-head"><h2 class="th-h2">나의 할 일</h2><img class="th-go" src="temp-home/assets/arrow-up-right.svg" alt=""></div>
+            <ul>
+              <li><span class="th-dday red">D-Day</span><span class="th-team"><span class="t-midu">MIDU</span></span><span class="th-when"><span>11/12</span><span>18:00</span></span><span class="th-title">유저 플로우 수정하기</span><button type="button" class="th-status s-done">완료<img src="temp-home/assets/chev-green.svg" alt=""></button></li>
+              <li><span class="th-dday">D-1</span><span class="th-team"><span class="t-jjw">졸준위</span></span><span class="th-when"><span>11/13</span><span>18:00</span></span><span class="th-title">전시 포스터 시안 공유하기</span><button type="button" class="th-status s-todo">시작 전<img src="temp-home/assets/chev-gray.svg" alt=""></button></li>
+              <li><span class="th-dday">D-4</span><span class="th-team"><span class="t-cap">캡스톤</span></span><span class="th-when"><span>11/16</span><span>18:00</span></span><span class="th-title">하이파이 목업 제작하기</span><button type="button" class="th-status s-doing">진행 중<img src="temp-home/assets/chev-blue.svg" alt=""></button></li>
+              <li><span class="th-dday">D-4</span><span class="th-team"><span class="t-cap">캡스톤</span></span><span class="th-when"><span>11/16</span><span>18:00</span></span><span class="th-title">사용성 테스트 시나리오 작성하기</span><button type="button" class="th-status s-doing">진행 중<img src="temp-home/assets/chev-blue.svg" alt=""></button></li>
+            </ul>
+          </section>
+        </div>
+
+        <!-- 전체 할 일 -->
+        <section class="th-card th-all">
+          <div class="th-card-head">
+            <div style="display:flex;align-items:center;gap:12px">
+              <button type="button" class="th-filter th-h2">전체<img src="temp-home/assets/chev-dark.svg" alt=""></button>
+              <h2 class="th-h2">할 일</h2>
+            </div>
+            <img class="th-go" src="temp-home/assets/arrow-up-right.svg" alt="">
+          </div>
+          <ul>
+            <li><div class="l"><div class="l1"><span class="th-dday red">D-Day</span><span class="th-team"><span class="t-midu">MIDU</span></span><span class="th-title">경쟁 서비스 UX 분석 정리</span></div><span class="who">문가영</span><span class="th-when"><span>11/12</span><span>23:00</span></span><div class="th-badges"><span class="th-badge s-done">완료</span></div></div>
+              <div class="th-act"><button type="button" class="th-btn-dark"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.5l3 3 6-7"/></svg>확인하기</button></div></li>
+            <li><div class="l"><div class="l1"><span class="th-dday red">D-Day</span><span class="th-team"><span class="t-midu">MIDU</span></span><span class="th-title">메인 화면 와이어프레임 수정</span></div><span class="who">최유나</span><span class="th-when"><span>11/12</span><span>23:00</span></span><div class="th-badges"><span class="th-badge s-doing">진행 중</span></div></div>
+              <div class="th-act"><button type="button" class="th-poke"><img src="temp-home/assets/poke.svg" alt="">찌르기</button></div></li>
+            <li><div class="l"><div class="l1"><span class="th-dday">D-1</span><span class="th-team"><span class="t-midu">MIDU</span></span><span class="th-title">컴포넌트 라이브러리 정리</span></div><span class="who">한서윤</span><span class="th-when"><span>11/13</span><span>23:59</span></span><div class="th-badges"><span class="th-badge s-doing">진행 중</span></div></div>
+              <div class="th-act"><button type="button" class="th-poke"><img src="temp-home/assets/poke.svg" alt="">찌르기</button></div></li>
+            <li><div class="l"><div class="l1"><span class="th-dday">D-2</span><span class="th-team"><span class="t-cap">캡스톤</span></span><span class="th-title">사용성 테스트 참가자 모집</span></div><span class="who">문가영</span><span class="th-when"><span>11/14</span><span>18:00</span></span><div class="th-badges"><span class="th-badge s-doing">진행 중</span></div></div>
+              <div class="th-act"><button type="button" class="th-poke"><img src="temp-home/assets/poke.svg" alt="">찌르기</button></div></li>
+            <li><div class="l"><div class="l1"><span class="th-dday">D-4</span><span class="th-team"><span class="t-midu">MIDU</span></span><span class="th-title">인터랙션 프로토타입 제작</span></div><span class="who">김민지</span><span class="th-when"><span>11/16</span><span>23:59</span></span><div class="th-badges"><span class="th-badge s-todo">시작 전</span></div></div>
+              <div class="th-act"><button type="button" class="th-poke"><img src="temp-home/assets/poke.svg" alt="">찌르기</button></div></li>
+            <li><div class="l"><div class="l1"><span class="th-dday">D-6</span><span class="th-team"><span class="t-jjw">졸준위</span></span><span class="th-title">전시 포스터 그리드 시안</span></div><span class="who">김민지</span><span class="th-when"><span>11/18</span><span>18:00</span></span><div class="th-badges"><span class="th-badge s-todo">시작 전</span></div></div>
+              <div class="th-act"><button type="button" class="th-poke"><img src="temp-home/assets/poke.svg" alt="">찌르기</button></div></li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </div>
+  <!-- TEMP-HOME:END -->
+
   <h1>WEON</h1>
   <p>준비 중입니다.</p>
 </body>

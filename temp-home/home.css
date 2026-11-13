@@ -141,3 +141,84 @@ body:has(> .th) { margin: 0; background: #eff1f5; }
   .th-side { width: 220px; }
   .th-all .l { gap: 20px; }
 }
+
+/* ---------- 모바일 (≤768px) ---------- */
+@media (max-width: 768px) {
+  .th { flex-direction: column; }
+
+  /* 사이드바 → 상단 헤더 + 하단 탭바 */
+  .th-side { position: sticky; top: 0; z-index: 10; height: auto; width: 100%;
+    flex-direction: row; align-items: center; padding: 12px 16px; border-bottom: 1px solid #e8eef3; }
+  .th-logo { padding: 0; }
+  .th-logo img { width: 28px; height: 28.3px; }
+  .th-nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; margin: 0;
+    flex-direction: row; gap: 0; background: var(--g1); border-top: 1px solid #e8eef3;
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom)); }
+  .th-nav a, .th-nav a.is-active { flex: 1; flex-direction: column; gap: 4px; padding: 6px 4px;
+    font-size: 11px; background: none; border-radius: 12px; text-align: center; }
+  .th-nav a.is-active { background: #eff1f5; }
+  .th-me { gap: 4px; }
+  .th-me .avatar { width: 32px; height: 32px; }
+  .th-me p { display: none; }
+  .th-me button { width: 36px; height: 36px; border-radius: 12px; background: none; }
+
+  /* 본문 */
+  .th-main { padding: 20px 16px calc(96px + env(safe-area-inset-bottom)); }
+  .th-greet { padding-left: 4px; margin-bottom: 16px; }
+  .th-greet h1 { font-size: 22px; letter-spacing: -0.44px; }
+  .th-greet p { font-size: 14px; }
+  .th-stack, .th-row { gap: 16px; }
+  .th-card, .th-cal, .th-noti, .th-all { padding: 20px 16px; border-radius: 20px; gap: 16px; }
+  .th-h2 { font-size: 20px; }
+  .th-go { width: 28px; height: 28px; }
+
+  /* 캘린더: 헤더 줄바꿈 + 요일 가로 스크롤 */
+  .th-cal .th-card-head { flex-wrap: wrap; row-gap: 12px; }
+  .th-cal-right { width: 100%; justify-content: space-between; }
+  .th-btn-dark { font-size: 14px; }
+  .th-week { overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -16px; padding: 0 16px;
+    scrollbar-width: none; }
+  .th-week::-webkit-scrollbar { display: none; }
+  .th-day { flex: 0 0 140px; min-height: 120px; scroll-snap-align: start; scroll-margin-left: 16px; }
+
+  /* 알림 */
+  .th-noti ul { gap: 14px; }
+  .th-noti li { font-size: 14px; align-items: flex-start; }
+  .th-noti li p { white-space: normal; padding-top: 2px; }
+  .th-ava { width: 36px; height: 36px; font-size: 13px; }
+  .th-ava.unread::after { left: 27px; }
+
+  /* 나의 할 일: 2줄 카드 */
+  .th-todo ul, .th-all ul { gap: 0; }
+  .th-todo li { display: grid; grid-template-columns: auto auto 1fr auto; column-gap: 8px; row-gap: 6px;
+    grid-template-areas: "dday team . status" "title title when when";
+    padding: 12px 0; border-top: 1px solid #f0f2f5; font-size: 14px; }
+  .th-todo li:first-child, .th-all li:first-child { border-top: 0; padding-top: 0; }
+  .th-todo .th-dday { grid-area: dday; width: auto; align-self: center; }
+  .th-todo .th-team { grid-area: team; width: auto; }
+  .th-todo .th-status { grid-area: status; }
+  .th-todo .th-title { grid-area: title; font-size: 16px; }
+  .th-todo .th-title { white-space: normal; }
+  .th-todo .th-when { grid-area: when; width: auto; align-self: center; justify-self: end; font-size: 13px; }
+  .th-team span { height: 26px; font-size: 13px; padding: 0 8px; }
+  .th-status { width: auto; gap: 2px; font-size: 13px !important; padding: 2px 4px 2px 10px !important; }
+  .th-status img { width: 20px; height: 20px; }
+
+  /* 전체 할 일: 3줄 카드 */
+  .th-filter { padding: 2px 10px !important; }
+  .th-filter img { width: 16px; height: 16px; }
+  .th-all .l, .th-all .l1 { display: contents; }
+  .th-all li { display: grid; grid-template-columns: auto auto 1fr auto; column-gap: 8px; row-gap: 6px;
+    grid-template-areas: "dday team . badges" "title title title title" "who when . act";
+    padding: 14px 0; border-top: 1px solid #f0f2f5; font-size: 14px; }
+  .th-all .th-dday { grid-area: dday; width: auto; align-self: center; }
+  .th-all .th-team { grid-area: team; width: auto; }
+  .th-all .th-title { grid-area: title; font-size: 16px; white-space: normal; }
+  .th-all .who { grid-area: who; align-self: center; color: var(--g6); }
+  .th-all .th-when { grid-area: when; width: auto; align-self: center; }
+  .th-badges { grid-area: badges; align-self: center; }
+  .th-badge { height: 26px; font-size: 12px; padding: 2px 10px; }
+  .th-act { grid-area: act; width: auto; }
+  .th-poke, .th-act .th-btn-dark { width: auto; font-size: 13px; padding: 4px 10px !important; }
+  .th-poke img { width: 16px; height: 16px; }
+}

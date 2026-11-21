@@ -18,3 +18,14 @@
 
 - 요약은 한국어, 50자 이내, 마침표 없음
 - 한 커밋에는 한 가지 작업만
+
+## 스토리북
+
+```bash
+npm install
+npm run storybook        # http://localhost:6006
+npm run build-storybook  # storybook-static/ 로 정적 빌드
+```
+
+- 컴포넌트는 `src/components/<이름>/` 아래에 `컴포넌트.tsx` + `컴포넌트.stories.tsx`로 둡니다
+- 전역 폰트 설정은 `src/styles/global.css`, 웹폰트 링크는 `.storybook/preview-head.html`

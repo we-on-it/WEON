@@ -1,0 +1,29 @@
+# main push / PR마다 Storybook을 Chromatic에 배포
+name: Chromatic
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Chromatic이 git 히스토리로 변경점을 비교함
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: build-storybook
+          exitZeroOnChanges: true # UI 변경이 있어도 CI 실패로 처리하지 않음
+          onlyChanged: true # 바뀐 스토리만 스냅샷 (무료 한도 절약)

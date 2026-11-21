@@ -1,0 +1,18 @@
+node_modules/
+storybook-static/
+*.log
+.DS_Store
+
+# 빌드 결과물
+dist/
+
+# 환경변수 / 비밀값
+.env
+.env.*
+!.env.example
+
+# TypeScript 증분 빌드 캐시
+*.tsbuildinfo
+
+# 개인 Claude Code 설정
+.claude/settings.local.json

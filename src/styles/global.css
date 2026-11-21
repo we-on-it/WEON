@@ -1,0 +1,13 @@
+/* index.html의 전역 폰트 설정과 동일하게 유지 */
+:root {
+  --font-sans: "Google Sans", "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", sans-serif;
+}
+html, body, button, input, select, textarea {
+  font-family: var(--font-sans);
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

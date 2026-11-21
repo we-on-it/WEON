@@ -3,6 +3,25 @@
   --font-sans: "Google Sans", "Pretendard Variable", Pretendard, -apple-system,
     BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR",
     "Malgun Gothic", sans-serif;
+
+  /* ── Typography (Figma 타이포 스케일 기준, 1rem = 16px) ── */
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --font-size-heading1: 2.125rem; /* 34px */
+  --font-size-heading2: 1.75rem; /* 28px */
+  --font-size-heading3: 1.5rem; /* 24px */
+  --font-size-heading4: 1.25rem; /* 20px */
+  --font-size-title: 1.125rem; /* 18px */
+  --font-size-body1: 1rem; /* 16px */
+  --font-size-body2: 0.9375rem; /* 15px */
+  --font-size-caption1: 0.8125rem; /* 13px */
+  --font-size-caption2: 0.75rem; /* 12px */
+
+  --line-height-heading: 1.4; /* 34→47.5, 28→39, 24→33.5, 20→28 */
+  --line-height-text: 1.5; /* Title·Body·Caption */
+
+  --letter-spacing-heading1: -0.015em; /* -0.5px @ 34px */
 }
 html, body, button, input, select, textarea {
   font-family: var(--font-sans);
@@ -11,3 +30,41 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* ── Typography 클래스 (Figma 스타일 이름과 1:1 대응) ── */
+.typo-heading1,
+.typo-heading2,
+.typo-heading3,
+.typo-heading4 {
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+}
+.typo-heading1 { font-size: var(--font-size-heading1); letter-spacing: var(--letter-spacing-heading1); }
+.typo-heading2 { font-size: var(--font-size-heading2); }
+.typo-heading3 { font-size: var(--font-size-heading3); }
+.typo-heading4 { font-size: var(--font-size-heading4); }
+
+.typo-title {
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-text);
+}
+
+.typo-body1-medium,
+.typo-body1-semibold,
+.typo-body2-medium,
+.typo-body2-semibold,
+.typo-caption1-medium,
+.typo-caption1-semibold,
+.typo-caption2-medium,
+.typo-caption2-semibold {
+  line-height: var(--line-height-text);
+}
+.typo-body1-medium      { font-size: var(--font-size-body1);    font-weight: var(--font-weight-medium); }
+.typo-body1-semibold    { font-size: var(--font-size-body1);    font-weight: var(--font-weight-semibold); }
+.typo-body2-medium      { font-size: var(--font-size-body2);    font-weight: var(--font-weight-medium); }
+.typo-body2-semibold    { font-size: var(--font-size-body2);    font-weight: var(--font-weight-semibold); }
+.typo-caption1-medium   { font-size: var(--font-size-caption1); font-weight: var(--font-weight-medium); }
+.typo-caption1-semibold { font-size: var(--font-size-caption1); font-weight: var(--font-weight-semibold); }
+.typo-caption2-medium   { font-size: var(--font-size-caption2); font-weight: var(--font-weight-medium); }
+.typo-caption2-semibold { font-size: var(--font-size-caption2); font-weight: var(--font-weight-semibold); }

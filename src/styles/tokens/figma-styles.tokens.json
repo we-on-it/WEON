@@ -1,0 +1,32 @@
+{
+  "$description": "Figma 스타일(변수가 아니라 export JSON에 포함되지 않는 것)을 수동으로 옮겨 적은 파일. 수정 후 npm run tokens",
+  "semantic": {
+    "background": {
+      "default": {
+        "$type": "gradient",
+        "$description": "Figma 스타일 color/semantic/background/default. 그라디언트라 background(-image)로만 사용",
+        "$value": {
+          "angle": 180,
+          "stops": [
+            { "color": "#F6F7F8", "position": 0.6 },
+            { "color": "#E7F5FF", "position": 1 }
+          ]
+        }
+      }
+    }
+  },
+  "effect": {
+    "shadow": {
+      "weak": {
+        "$type": "shadow",
+        "$description": "Figma effect style shadow-weak",
+        "$value": { "offsetX": 0, "offsetY": 12, "blur": 40, "spread": 0, "color": "{palette.black-alpha.300}" }
+      },
+      "normal": {
+        "$type": "shadow",
+        "$description": "Figma effect style shadow-normal",
+        "$value": { "offsetX": 0, "offsetY": 8, "blur": 24, "spread": 0, "color": "{palette.black-alpha.400}" }
+      }
+    }
+  }
+}

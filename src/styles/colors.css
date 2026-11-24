@@ -1,0 +1,182 @@
+/* 자동 생성 파일 — 직접 수정하지 마세요.
+ * 원본: src/styles/tokens/*.tokens.json (Figma 변수 export + 스타일 수동 정리)
+ * 생성: npm run tokens
+ */
+:root {
+  /* palette/gray */
+  --palette-gray-0: #FFFFFF;
+  --palette-gray-50: #F6F7F8;
+  --palette-gray-100: #EFF2F6;
+  --palette-gray-200: #DEE2E7;
+  --palette-gray-300: #C9CED6;
+  --palette-gray-400: #AEB5BF;
+  --palette-gray-500: #949CA7;
+  --palette-gray-600: #7C8490;
+  --palette-gray-700: #616A76;
+  --palette-gray-800: #464E59;
+  --palette-gray-900: #2D333D;
+  --palette-gray-1000: #161B22;
+
+  /* palette/black-alpha */
+  --palette-black-alpha-0: rgb(0 0 0 / 0);
+  --palette-black-alpha-100: rgb(0 0 0 / 0.03);
+  --palette-black-alpha-200: rgb(0 0 0 / 0.05);
+  --palette-black-alpha-300: rgb(0 0 0 / 0.07);
+  --palette-black-alpha-400: rgb(0 0 0 / 0.13);
+  --palette-black-alpha-500: rgb(0 0 0 / 0.17);
+  --palette-black-alpha-600: rgb(0 0 0 / 0.3);
+  --palette-black-alpha-700: rgb(0 0 0 / 0.45);
+  --palette-black-alpha-800: rgb(0 0 0 / 0.65);
+  --palette-black-alpha-900: rgb(0 0 0 / 0.8);
+  --palette-black-alpha-1000: rgb(0 0 0 / 0.89);
+
+  /* palette/red */
+  --palette-red-100: #FFE7E7;
+  --palette-red-200: #FED1D1;
+  --palette-red-300: #FDB5B5;
+  --palette-red-400: #FF9494;
+  --palette-red-500: #FF6B6B;
+  --palette-red-600: #F84444;
+  --palette-red-700: #E70D0D;
+  --palette-red-800: #BA0808;
+  --palette-red-900: #860303;
+  --palette-red-1000: #460101;
+
+  /* palette/pink */
+  --palette-pink-100: #FFE8EF;
+  --palette-pink-200: #FDD0DD;
+  --palette-pink-300: #FCB1C6;
+  --palette-pink-400: #F994B1;
+  --palette-pink-500: #FB6F97;
+  --palette-pink-600: #F8497B;
+  --palette-pink-700: #DF2056;
+  --palette-pink-800: #B80A3B;
+  --palette-pink-900: #810427;
+  --palette-pink-1000: #450215;
+
+  /* palette/yellow */
+  --palette-yellow-100: #FCF0CE;
+  --palette-yellow-200: #F6DC95;
+  --palette-yellow-300: #FBC532;
+  --palette-yellow-400: #F0AB0A;
+  --palette-yellow-500: #E09600;
+  --palette-yellow-600: #CF8002;
+  --palette-yellow-700: #B16706;
+  --palette-yellow-800: #934F06;
+  --palette-yellow-900: #6B3606;
+  --palette-yellow-1000: #331702;
+
+  /* palette/green */
+  --palette-green-100: #E3F7EB;
+  --palette-green-200: #B6F1CD;
+  --palette-green-300: #8CE3B2;
+  --palette-green-400: #60D299;
+  --palette-green-500: #36BF81;
+  --palette-green-600: #10AD6E;
+  --palette-green-700: #009459;
+  --palette-green-800: #027446;
+  --palette-green-900: #094E31;
+  --palette-green-1000: #062315;
+
+  /* palette/blue */
+  --palette-blue-100: #E1F3FF;
+  --palette-blue-200: #BDE4FE;
+  --palette-blue-300: #99D4FE;
+  --palette-blue-400: #79BEFB;
+  --palette-blue-500: #5AA6F2;
+  --palette-blue-600: #4691E8;
+  --palette-blue-700: #3679D4;
+  --palette-blue-800: #2C5DAE;
+  --palette-blue-900: #203F7C;
+  --palette-blue-1000: #0C1C42;
+
+  /* palette/purple */
+  --palette-purple-100: #F2EDFE;
+  --palette-purple-200: #E3D6FE;
+  --palette-purple-300: #D5BFFE;
+  --palette-purple-400: #C2A4FE;
+  --palette-purple-500: #AD88FC;
+  --palette-purple-600: #9A72F2;
+  --palette-purple-700: #845CDA;
+  --palette-purple-800: #6845B6;
+  --palette-purple-900: #492B86;
+  --palette-purple-1000: #23104A;
+
+  /* palette/neon */
+  --palette-neon-tint: #F2FAD8;
+  --palette-neon-light: #E8FF94;
+  --palette-neon-neon: #CAFF8D;
+  --palette-neon-strong: #AAF05E;
+
+  /* semantic/background */
+  --background-floated: var(--palette-gray-0);
+  --background-floated-subtle: var(--palette-gray-50);
+  --background-dim: var(--palette-black-alpha-700);
+  --background-default: linear-gradient(180deg, #F6F7F8 60%, #E7F5FF 100%);
+
+  /* semantic/foreground */
+  --foreground-brand: var(--palette-blue-600);
+  --foreground-primary: var(--palette-gray-1000);
+  --foreground-secondary: var(--palette-gray-800);
+  --foreground-tertiary: var(--palette-gray-600);
+  --foreground-quaternary: var(--palette-gray-400);
+  --foreground-disabled: var(--palette-gray-300);
+  --foreground-inverted: var(--palette-gray-0);
+  --foreground-warning: var(--palette-yellow-600);
+  --foreground-critical: var(--palette-red-600);
+  --foreground-success: var(--palette-green-600);
+  --foreground-ai: var(--palette-purple-600);
+
+  /* semantic/fill */
+  --fill-neutral: var(--palette-gray-900);
+  --fill-neutral-hover: var(--palette-gray-1000);
+  --fill-neutral-pressed: #000000;
+  --fill-neutral-weak: var(--palette-gray-100);
+  --fill-neutral-weak-hover: var(--palette-gray-200);
+  --fill-neutral-weak-pressed: var(--palette-gray-300);
+  --fill-white: var(--palette-gray-0);
+  --fill-white-hover: var(--palette-gray-100);
+  --fill-white-pressed: var(--palette-gray-200);
+  --fill-brand: var(--palette-blue-600);
+  --fill-brand-hover: var(--palette-blue-700);
+  --fill-brand-pressed: var(--palette-blue-800);
+  --fill-brand-weak: var(--palette-blue-100);
+  --fill-brand-weak-hover: var(--palette-blue-200);
+  --fill-brand-weak-pressed: var(--palette-blue-300);
+  --fill-warning: var(--palette-yellow-600);
+  --fill-warning-hover: var(--palette-yellow-700);
+  --fill-warning-pressed: var(--palette-yellow-800);
+  --fill-warning-weak: var(--palette-yellow-100);
+  --fill-warning-weak-hover: var(--palette-yellow-200);
+  --fill-warning-weak-pressed: var(--palette-yellow-300);
+  --fill-critical: var(--palette-red-600);
+  --fill-critical-hover: var(--palette-red-700);
+  --fill-critical-pressed: var(--palette-red-800);
+  --fill-critical-weak: var(--palette-red-100);
+  --fill-critical-weak-hover: var(--palette-red-200);
+  --fill-critical-weak-pressed: var(--palette-red-300);
+  --fill-success: var(--palette-green-600);
+  --fill-success-hover: var(--palette-green-700);
+  --fill-success-pressed: var(--palette-green-800);
+  --fill-success-weak: var(--palette-green-100);
+  --fill-success-weak-hover: var(--palette-green-200);
+  --fill-success-weak-pressed: var(--palette-green-300);
+  --fill-ai: var(--palette-purple-600);
+  --fill-ai-hover: var(--palette-purple-700);
+  --fill-ai-pressed: var(--palette-purple-800);
+  --fill-ai-weak: var(--palette-purple-100);
+  --fill-ai-weak-hover: var(--palette-purple-200);
+  --fill-ai-weak-pressed: var(--palette-purple-300);
+  --fill-transparent: var(--palette-black-alpha-0);
+  --fill-transparent-hover: var(--palette-black-alpha-100);
+  --fill-transparent-pressed: var(--palette-black-alpha-200);
+
+  /* semantic/border */
+  --border-default: var(--palette-gray-1000);
+  --border-weak: var(--palette-gray-200);
+  --border-focus: var(--palette-blue-600);
+
+  /* effect/shadow */
+  --shadow-weak: 0 12px 40px 0 var(--palette-black-alpha-300);
+  --shadow-normal: 0 8px 24px 0 var(--palette-black-alpha-400);
+}

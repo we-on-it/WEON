@@ -5,7 +5,6 @@ const config: StorybookConfig = {
   addons: ['@storybook/addon-docs'],
   framework: '@storybook/react-vite',
   staticDirs: [
-    { from: '../temp-home/assets', to: '/assets' },
     { from: '../favicon.svg', to: '/favicon.svg' },
   ],
 };

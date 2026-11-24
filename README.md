@@ -51,3 +51,17 @@ npm run build-storybook  # storybook-static/ 로 정적 빌드
 
 - 컴포넌트는 `src/components/<이름>/` 아래에 `컴포넌트.tsx` + `컴포넌트.stories.tsx`로 둡니다
 - 전역 폰트 설정은 `src/styles/global.css`, 웹폰트 링크는 `.storybook/preview-head.html`
+
+## 아이콘
+
+```tsx
+import { Icon } from './components/Icon/Icon';
+
+<Icon name="bell" />                          // 24px, 기본
+<Icon name="bell" size={16} fill />           // 16px, 채움 버전
+<Icon name="search" style={{ color: '#2563eb' }} title="검색" />
+```
+
+- 색은 `color`로 지정 (SVG가 `currentColor` 사용)
+- 목록은 스토리북 `Foundation/Icon > All`에서 확인, 클릭하면 이름 복사
+- 추가: `src/assets/icons/<이름>[-fill].svg`(24px) 넣고 `src/components/Icon/icons.ts` 목록에 이름 추가

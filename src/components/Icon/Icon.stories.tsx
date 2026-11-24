@@ -4,12 +4,16 @@ import { Icon } from './Icon';
 import { FILLABLE_ICON_NAMES, ICON_NAMES, type IconName } from './icons';
 
 const meta = {
-  title: 'Foundation/Icon',
+  title: 'Foundations/Icon',
   component: Icon,
   args: { name: 'bell', size: 24, fill: false },
   argTypes: {
     name: { control: 'select', options: ICON_NAMES },
-    size: { control: 'inline-radio', options: [16, 24] },
+    size: {
+      control: 'inline-radio',
+      options: [16, 20, 22, 24, 32],
+      description: '22 미만 → 16px 원본, 22 이상 → 24px 원본',
+    },
     fill: { control: 'boolean', description: 'Fill 버전이 있는 아이콘만 적용' },
     color: { control: 'color' },
   },
@@ -32,7 +36,7 @@ const caption: CSSProperties = {
   wordBreak: 'break-all',
 };
 
-function Gallery({ size, color }: { size: 16 | 24; color: string }) {
+function Gallery({ size, color }: { size: number; color: string }) {
   const [copied, setCopied] = useState<string | null>(null);
 
   const copy = (name: string) => {
@@ -69,7 +73,7 @@ function Gallery({ size, color }: { size: 16 | 24; color: string }) {
             color: 'inherit',
           }}
         >
-          <div style={{ display: 'flex', gap: 12, alignItems: 'center', height: 24 }}>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center', minHeight: 24 }}>
             <Icon name={name as never} size={size} />
             {fillable.has(name) && <Icon name={name as never} size={size} fill />}
           </div>
@@ -81,10 +85,10 @@ function Gallery({ size, color }: { size: 16 | 24; color: string }) {
 }
 
 /** 전체 아이콘 (Fill 버전이 있으면 오른쪽에 함께 표시). 클릭하면 이름이 복사돼요 */
-export const All: StoryObj<{ size: 16 | 24; color: string }> = {
+export const All: StoryObj<{ size: number; color: string }> = {
   args: { size: 24, color: '#2D333D' },
   argTypes: {
-    size: { control: 'inline-radio', options: [16, 24] },
+    size: { control: 'inline-radio', options: [16, 20, 22, 24, 32] },
     color: { control: 'color' },
   },
   parameters: { controls: { include: ['size', 'color'] } },

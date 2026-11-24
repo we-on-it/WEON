@@ -1,8 +1,8 @@
 /**
  * Figma `Icon/*` 컴포넌트 세트 목록 (MIDU 피그마 > icon 섹션).
- * SVG 원본은 src/assets/icons/<이름>[-fill].svg (24px 기준, 색은 currentColor)
+ * SVG 원본은 src/assets/icons/{16,24}/<이름>[-fill].svg (색은 currentColor)
  *
- * 아이콘 추가 시: SVG 파일을 넣고 아래 목록에 이름을 추가하세요.
+ * 아이콘 추가 시: 16·24 SVG를 각 폴더에 넣고 아래 목록에 이름을 추가하세요.
  */
 export const ICON_NAMES = [
   'alert-triangle',
@@ -91,16 +91,24 @@ export const FILLABLE_ICON_NAMES = [
 export type IconName = (typeof ICON_NAMES)[number];
 export type FillableIconName = (typeof FILLABLE_ICON_NAMES)[number];
 
-/** 파일명 → SVG 안쪽 마크업(<path> 등) */
-const files = import.meta.glob<string>('../../assets/icons/*.svg', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
-});
+/** 원본 크기. 표시 크기 22px 미만은 16, 22px 이상은 24 원본을 씁니다 */
+export type IconSource = 16 | 24;
+export const pickSource = (size: number): IconSource => (size < 22 ? 16 : 24);
 
-export const ICON_MARKUP: Record<string, string> = Object.fromEntries(
-  Object.entries(files).map(([path, svg]) => [
-    path.slice(path.lastIndexOf('/') + 1, -'.svg'.length),
-    svg.replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>\s*$/, ''),
-  ]),
-);
+const toMarkup = (files: Record<string, string>) =>
+  Object.fromEntries(
+    Object.entries(files).map(([path, svg]) => [
+      path.slice(path.lastIndexOf('/') + 1, -'.svg'.length),
+      svg.replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>\s*$/, ''),
+    ]),
+  );
+
+/** 원본 크기 → 파일명 → SVG 안쪽 마크업(<path> 등) */
+export const ICON_MARKUP: Record<IconSource, Record<string, string>> = {
+  16: toMarkup(
+    import.meta.glob<string>('../../assets/icons/16/*.svg', { query: '?raw', import: 'default', eager: true }),
+  ),
+  24: toMarkup(
+    import.meta.glob<string>('../../assets/icons/24/*.svg', { query: '?raw', import: 'default', eager: true }),
+  ),
+};

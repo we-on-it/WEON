@@ -1,0 +1,155 @@
+/* Figma: Components / Button (node 608:42999) */
+
+.button {
+  /* 타입별로 아래 변수만 바꿔 끼웁니다 */
+  --btn-bg: transparent;
+  --btn-bg-hover: var(--btn-bg);
+  --btn-bg-pressed: var(--btn-bg-hover);
+  --btn-fg: var(--foreground-primary);
+  --btn-border: transparent;
+
+  /* 사이즈별 값 */
+  --btn-height: 40px;
+  --btn-py: 8px;
+  --btn-px: 16px; /* 텍스트 쪽 */
+  --btn-px-icon: 12px; /* 아이콘 쪽 */
+
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: var(--btn-height);
+  margin: 0;
+  padding: var(--btn-py) var(--btn-px);
+  border: none;
+  /* Figma의 inside stroke처럼 크기에 영향 없이 테두리를 그립니다 */
+  box-shadow: inset 0 0 0 1px var(--btn-border);
+  border-radius: 10px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: inherit;
+  line-height: var(--line-height-text);
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 120ms ease;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--btn-bg-hover);
+}
+.button:active:not(:disabled) {
+  background: var(--btn-bg-pressed);
+}
+.button:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+/* ── Size ───────────────────────────────────────────── */
+.xsmall {
+  --btn-height: 32px;
+  --btn-py: 6px;
+  --btn-px: 14px;
+  --btn-px-icon: 10px;
+  font-size: var(--font-size-caption1);
+  font-weight: var(--font-weight-medium);
+}
+.small {
+  --btn-height: 39px;
+  --btn-py: 8px;
+  --btn-px: 14px;
+  --btn-px-icon: 10px;
+  font-size: var(--font-size-body2);
+  font-weight: var(--font-weight-medium);
+}
+.medium {
+  --btn-height: 40px;
+  --btn-py: 8px;
+  --btn-px: 16px;
+  --btn-px-icon: 12px;
+  font-size: var(--font-size-body1);
+  font-weight: var(--font-weight-medium);
+}
+.large {
+  --btn-height: 55px;
+  --btn-py: 14px;
+  --btn-px: 20px;
+  --btn-px-icon: 20px;
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ── Layout (Figma variant) ─────────────────────────── */
+/* 아이콘 쪽은 패딩이 4px 작아 시각적으로 균형을 맞춥니다 (large는 동일) */
+.iconFirst {
+  padding-inline-start: var(--btn-px-icon);
+}
+.iconLast {
+  padding-inline-end: var(--btn-px-icon);
+}
+.iconOnly {
+  min-width: var(--btn-height);
+  padding: var(--btn-py);
+}
+
+/* ── Type ───────────────────────────────────────────── */
+.neutral-solid {
+  --btn-bg: var(--fill-neutral);
+  --btn-bg-hover: var(--fill-neutral-hover);
+  --btn-bg-pressed: var(--fill-neutral-pressed);
+  --btn-fg: var(--foreground-inverted);
+}
+.neutral-weak {
+  --btn-bg: var(--fill-neutral-weak);
+  --btn-bg-hover: var(--fill-neutral-weak-hover);
+  --btn-bg-pressed: var(--fill-neutral-weak-pressed);
+  --btn-fg: var(--foreground-primary);
+}
+.neutral-outlined {
+  --btn-bg: var(--fill-transparent);
+  --btn-bg-hover: var(--fill-transparent-hover);
+  --btn-bg-pressed: var(--fill-transparent-pressed);
+  --btn-fg: var(--foreground-primary);
+  --btn-border: var(--border-default);
+}
+/* ghost는 hover/press에서 디자인 변화가 없습니다 */
+.neutral-ghost {
+  --btn-bg: var(--fill-transparent);
+  --btn-fg: var(--foreground-primary);
+}
+.brand-solid {
+  --btn-bg: var(--fill-brand);
+  --btn-bg-hover: var(--fill-brand-hover);
+  --btn-bg-pressed: var(--fill-brand-pressed);
+  --btn-fg: var(--foreground-inverted);
+}
+.brand-weak {
+  --btn-bg: var(--fill-brand-weak);
+  --btn-bg-hover: var(--fill-brand-weak-hover);
+  --btn-bg-pressed: var(--fill-brand-weak-pressed);
+  --btn-fg: var(--foreground-brand);
+}
+.critical-solid {
+  --btn-bg: var(--fill-critical);
+  --btn-bg-hover: var(--fill-critical-hover);
+  --btn-bg-pressed: var(--fill-critical-pressed);
+  --btn-fg: var(--foreground-inverted);
+}
+.critical-weak {
+  --btn-bg: var(--fill-critical-weak);
+  --btn-bg-hover: var(--fill-critical-weak-hover);
+  --btn-bg-pressed: var(--fill-critical-weak-pressed);
+  --btn-fg: var(--foreground-critical);
+}

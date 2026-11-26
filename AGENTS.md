@@ -8,4 +8,12 @@ Claude Code·Codex 등 모든 AI 에이전트가 지킨다. (Claude Code는 `CLA
 
 - 파일을 고치기 전에 현재 브랜치를 확인한다. `main`이면 최신 `main`에서 README 규칙대로 작업 브랜치를 먼저 만든다.
 - 이미 작업 브랜치에 있는데 관련 없는 새 작업을 요청받으면, `main`에서 새 브랜치를 따도 되는지 사용자에게 먼저 묻는다.
-- `git push`는 하지 않는다 (Claude는 `.claude/settings.json`, Codex는 `.codex/rules/`에서 차단됨). 작업이 끝나면 커밋까지만 하고, 사용자에게 push → `main`으로 PR → 리뷰 후 merge를 직접 하라고 안내한다.
+- 작업 중에는 커밋만 하고, 커밋할 때마다 push하지 않는다.
+- 작업이 끝나면 사용자에게 "push하고 PR 열까요?"라고 묻고, 승인받으면 push와 PR 생성을 한 번에 한다.
+  ```bash
+  git push -u origin <브랜치>
+  gh pr create --base main --fill
+  ```
+  - push는 실행 전에 승인 창이 뜬다 (Claude는 `.claude/settings.json`, Codex는 `.codex/rules/`).
+  - `gh`가 없거나 로그인되어 있지 않으면 push까지만 하고, GitHub에서 PR을 열 수 있는 링크를 알려준다.
+- merge는 하지 않는다. 사용자가 리뷰 후 직접 한다. (merge된 브랜치는 GitHub에서 자동 삭제됨)

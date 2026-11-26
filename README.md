@@ -22,24 +22,28 @@
 ## 브랜치 구조
 
 ```
-main      ← 배포 브랜치 (직접 커밋 X)
- └ develop   ← 작업 통합 브랜치
-    ├ jieun
-    ├ minji
-    ├ sieun
-    └ yugyung   ← 개인 작업 브랜치
+main                  ← 배포 브랜치 (직접 커밋 X)
+ ├ feat/button        ← 작업 단위 브랜치
+ ├ design/color-token
+ └ fix/mobile-menu
 ```
 
 | 브랜치 | 역할 |
 |---|---|
-| `main` | 배포되는 코드. `develop`에서 PR로만 합침 |
-| `develop` | 각자 작업을 모으는 곳. 개인 브랜치에서 PR로 합침 |
-| `<이름>` | 개인 작업 브랜치. 여기서 커밋하고 `develop`으로 PR |
+| `main` | 배포되는 코드. 작업 브랜치에서 PR로만 합침 |
+| `<타입>/<작업명>` | 작업 하나당 브랜치 하나. `main`에서 따고, 끝나면 `main`으로 PR |
 
-1. 작업 전 `develop`의 최신 내용을 내 브랜치로 가져오기 (`git pull origin develop`)
-2. 내 브랜치에서 커밋 → push
-3. `develop`으로 PR → 리뷰 후 merge
-4. 배포할 때 `develop` → `main` PR
+- `<타입>`은 커밋 타입과 같이 씀 (`feat`, `fix`, `design`, `docs`, `refactor`, `chore` …)
+- `<작업명>`은 영어 소문자, 단어는 `-`로 연결 (예: `feat/login-page`)
+- merge된 브랜치는 삭제
+
+```bash
+git switch main && git pull           # 1. main 최신화
+git switch -c feat/login-page         # 2. 작업 브랜치 만들기
+git push -u origin feat/login-page    # 3. 커밋 후 push
+```
+
+4. GitHub에서 `main`으로 PR → 리뷰 후 merge → 브랜치 삭제
 
 ## 스토리북
 

@@ -33,7 +33,7 @@ main                  ← 배포 브랜치 (직접 커밋 X)
 | `main` | 배포되는 코드. 작업 브랜치에서 PR로만 합침 |
 | `<타입>/<작업명>` | 작업 하나당 브랜치 하나. `main`에서 따고, 끝나면 `main`으로 PR |
 
-- `<타입>`은 커밋 타입과 같이 씀 (`feat`, `fix`, `design`, `docs`, `refactor`, `chore` …)
+- `<타입>`은 커밋 타입과 같이 씀 (`feat`, `fix`, `docs`, `style`, `design`, `refactor`, `chore`)
 - `<작업명>`은 영어 소문자, 단어는 `-`로 연결 (예: `feat/login-page`)
 - merge된 브랜치는 삭제
 

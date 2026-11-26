@@ -1,0 +1,6 @@
+# AI 에이전트의 push는 사용자 승인 후에만 실행된다. (AGENTS.md 참고)
+prefix_rule(
+    pattern = ["git", "push"],
+    decision = "prompt",
+    justification = "WEON 규칙: push는 작업이 끝났을 때 한 번만, 사용자 승인 후 PR 생성과 함께 한다.",
+)

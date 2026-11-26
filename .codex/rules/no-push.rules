@@ -1,0 +1,6 @@
+# AI 에이전트는 push하지 않는다. push·PR은 사람이 직접 한다. (AGENTS.md 참고)
+prefix_rule(
+    pattern = ["git", "push"],
+    decision = "forbidden",
+    justification = "WEON 규칙: 에이전트는 커밋까지만 하고, push는 사용자가 터미널에서 직접 한다.",
+)

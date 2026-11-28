@@ -66,7 +66,7 @@ function Swatch({ token, copied, onCopy }: { token: Token; copied: boolean; onCo
   );
 }
 
-function ColorGroups({ kind }: { kind: 'palette' | 'semantic' }) {
+function ColorGroups({ kind }: { kind: 'palette' | 'semantic' | 'accent' }) {
   const [copied, setCopied] = useState<string | null>(null);
   const copy = (name: string) => {
     void navigator.clipboard?.writeText(`var(${name})`);
@@ -102,6 +102,9 @@ type Story = StoryObj<typeof meta>;
 
 /** 용도별 색 (화면 작업에는 이 변수를 쓰세요). 클릭하면 var(...) 복사 */
 export const Semantic: Story = { render: () => <ColorGroups kind="semantic" /> };
+
+/** 태그·라벨 등 구분용 강조 색 (배경·글자·테두리 세트) */
+export const Accent: Story = { render: () => <ColorGroups kind="accent" /> };
 
 /** 원본 팔레트. semantic이 참조하는 값 */
 export const Palette: Story = { render: () => <ColorGroups kind="palette" /> };

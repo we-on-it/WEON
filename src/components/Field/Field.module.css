@@ -23,7 +23,7 @@
   margin-inline-start: auto;
 }
 
-/* ── footer: description 또는 error ─────────────────── */
+/* ── footer: description 또는 error (+ TextAreaField 글자 수) ── */
 .footer {
   display: flex;
   align-items: flex-end;
@@ -39,6 +39,16 @@
   font-size: var(--font-size-caption1);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-text);
+}
+
+/* 글자 수: 안내·에러가 없어도 오른쪽 끝에 붙어요 */
+.counter {
+  flex-shrink: 0;
+  margin: 0 0 0 auto;
+  font-size: var(--font-size-caption1);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+  white-space: nowrap;
 }
 
 .description {

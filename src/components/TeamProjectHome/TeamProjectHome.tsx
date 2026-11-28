@@ -3,6 +3,7 @@ import { getMyNotifications, getMyTasks } from '../../mocks/queries';
 import { Avatar } from '../Avatar/Avatar';
 import { Badge } from '../Badge/Badge';
 import { Button } from '../Button/Button';
+import { DropdownMenu, MenuItem } from '../Dropdown/Dropdown';
 import { Icon } from '../Icon/Icon';
 import { Popup } from '../Popup/Popup';
 import { ALL_PROJECTS_ID, Sidebar, type SidebarMenu } from '../Sidebar/Sidebar';
@@ -115,7 +116,15 @@ export function TeamProjectHome({ projects = defaultProjects, profile = homeUser
       {project ? <main className={styles.main}>
         <header className={styles.header}>
           <div className={styles.heading}><h1 className="typo-heading1">{project.name}</h1>
-            <button className={styles.iconButton} aria-label="프로젝트 정보" onClick={() => show(project.name, project.description)}><Icon name="more" /></button>
+            <DropdownMenu width={163} sideOffset={12} className={styles.projectMenu} trigger={
+              <button type="button" className={styles.iconButton} aria-label={project.name + ' 더보기'}><Icon name="more" /></button>
+            }>
+              <MenuItem label="초대 링크 생성" leading={<Icon name="link" size={16} />}
+                onSelect={() => show('초대 링크 생성', '데모에서는 초대 링크를 발급할 수 없습니다.')} />
+              <div role="separator" className={styles.menuDivider} />
+              <MenuItem label="프로젝트 설정" leading={<Icon name="settings" size={16} fill />}
+                onSelect={() => show('프로젝트 설정', <><strong>{project.name}</strong><p>{project.description}</p></>)} />
+            </DropdownMenu>
           </div>
           <div className={styles.tabScroll}>
             <Tabs value={tab} onValueChange={setTab} aria-label="프로젝트 메뉴" className={styles.tabs}>

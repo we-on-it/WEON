@@ -25,6 +25,25 @@
 }
 .iconButton { display: grid; place-items: center; width: 24px; height: 24px; border-radius: var(--round-4); }
 .iconButton:hover { background: var(--fill-transparent-hover); }
+[role="menu"].projectMenu {
+  padding: var(--padding-4) var(--padding-8);
+  background: var(--fill-white);
+  box-shadow: 0 6px 20px rgb(22 27 34 / 15%);
+  --font-size-body2: var(--font-size-caption1);
+}
+.projectMenu [role="menuitem"] {
+  min-height: 36px;
+  padding: var(--padding-8);
+  gap: var(--gap-4);
+  border-radius: var(--round-10);
+}
+.menuDivider { height: 0; position: relative; }
+.menuDivider::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  border-top: 1px solid var(--border-weak);
+}
 .heading .iconButton { color: var(--foreground-tertiary); }
 .tabScroll { overflow-x: auto; padding: 3px; margin: -3px; }
 .tabs { gap: var(--gap-40); }

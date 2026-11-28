@@ -89,6 +89,8 @@ export type DropdownMenuProps = {
   onOpenChange?: (open: boolean) => void;
   /** 트리거 기준 가로 정렬 (기본 start) */
   align?: 'start' | 'center' | 'end';
+  /** 트리거와 메뉴 사이 거리(px) */
+  sideOffset?: number;
   /** 메뉴 너비. Figma 기본 280 */
   width?: number | string;
   className?: string;
@@ -106,6 +108,7 @@ export function DropdownMenu({
   open,
   onOpenChange,
   align = 'start',
+  sideOffset = 4,
   width = 280,
   className,
 }: DropdownMenuProps) {
@@ -115,7 +118,7 @@ export function DropdownMenu({
       <RadixMenu.Portal>
         <RadixMenu.Content
           align={align}
-          sideOffset={4}
+          sideOffset={sideOffset}
           collisionPadding={8}
           className={cx(styles.menu, className)}
           style={{ width }}

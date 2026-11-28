@@ -40,7 +40,7 @@ function TaskCard({ task, today, onEdit }: { task: BoardTask; today: string; onE
   );
 }
 
-function TaskEditor({ task, onSave, onClose }: { task: BoardTask; onSave: Props['onSave']; onClose: () => void }) {
+export function TaskEditor({ task, onSave, onClose }: { task: BoardTask; onSave: Props['onSave']; onClose: () => void }) {
   const [title, setTitle] = useState(task.title);
   const [attempted, setAttempted] = useState(false);
   const formId = useId();

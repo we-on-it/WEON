@@ -1,0 +1,49 @@
+.schedule { min-width: 0; margin-left: -5px; display: grid; gap: 28px; align-content: start; }
+.heading, .tools, .filters, .filters label, .navigation, .toggle, .toggle button, .milestone { display: flex; align-items: center; }
+.heading { justify-content: space-between; gap: var(--gap-16); }
+.heading h2 { margin: 0; font-size: var(--font-size-heading3); }
+.heading p { margin: var(--gap-4) 0 0; color: var(--foreground-secondary); }
+.panel { min-width: 0; padding: var(--padding-24); border-radius: 24px; background: var(--background-floated); }
+.tools { min-height: 46px; gap: var(--gap-8); margin-bottom: var(--gap-16); }
+.tools strong { font-size: var(--font-size-heading4); }
+.navigation button, .toggle button { border: 0; font: inherit; cursor: pointer; color: inherit; background: transparent; }
+.navigation button { display: grid; place-items: center; padding: 2px; }
+.filters { margin-left: auto; gap: var(--gap-12); padding-right: var(--padding-8); }
+.filters label { gap: var(--gap-6); cursor: pointer; font-size: var(--font-size-body2); }
+.filters input { width: 16px; height: 16px; margin: 0; accent-color: var(--fill-brand); }
+.toggle { background: var(--fill-neutral-weak); border-radius: var(--round-pill); padding: 3px; }
+.toggle button { gap: var(--gap-4); padding: 8px 14px; border-radius: inherit; color: var(--foreground-tertiary); }
+.toggle button[aria-pressed=true] { background: var(--fill-white); color: var(--foreground-primary); }
+.weekdays, .dates, .bars { display: grid; grid-template-columns: repeat(7,minmax(0,1fr)); }
+.weekdays { height: 40px; color: var(--foreground-secondary); font-size: var(--font-size-body2); }
+.weekdays span { padding-left: 10px; }
+.weekdays span:first-child, .dates time:first-child { color: var(--foreground-critical); }
+.weekdays span:last-child { color: var(--foreground-brand); }
+.week { position: relative; min-height: 128px; box-sizing: border-box; border-top: 1px solid var(--border-weak); }
+.week:last-child { border-bottom: 1px solid var(--border-weak); }
+.dates { position: absolute; inset: 0; border-right: 1px solid var(--border-weak); }
+.dates time { border-left: 1px solid var(--border-weak); padding: 8px 10px; font-size: var(--font-size-body2); }
+.dates time[data-outside=true] { color: var(--foreground-quaternary); }
+.dates time[aria-current=date] { background: var(--fill-brand-weak); color: var(--foreground-brand); }
+.bars { position: relative; padding: 32px 0 4px; grid-auto-flow: row dense; gap: 2px 0; pointer-events: none; }
+.bar, .event { color: var(--foreground-brand); background: var(--fill-brand-weak); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: var(--font-size-caption2); }
+.bar { padding: 1px 8px; border-radius: 6px; margin: 0 4px; }
+.timeline { position: relative; min-height: 514px; display: flex; flex-direction: column; }
+.days, .track { display: grid; grid-template-columns: repeat(10,minmax(0,1fr)); }
+.days { margin-bottom: 22px; }
+.days time { justify-self: center; display: grid; place-items: center; width: 32px; height: 32px; }
+.days time[aria-current=date] { border-radius: 50%; background: var(--fill-critical); color: var(--foreground-inverted); }
+.marker { position: absolute; top: 32px; bottom: 0; border-left: 1px solid var(--fill-critical); }
+.marker::before { content: ''; position: absolute; left: -5px; top: -1px; width: 9px; height: 9px; border-radius: 50%; background: var(--fill-critical); }
+.tracks { position: relative; display: grid; gap: 4px; }
+.milestone { gap: 8px; min-height: 58px; padding: 0 12px; border-radius: 10px; background: var(--fill-white); border: 1px solid var(--border-weak); font-weight: var(--font-weight-semibold); }
+.milestone small { background: var(--fill-neutral-weak); color: var(--foreground-tertiary); border-radius: var(--round-pill); padding: 4px 10px; white-space: nowrap; }
+.milestone span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.event { border-radius: var(--round-pill); padding: 5px 8px; }
+.timeline > button { margin-top: auto; align-self: flex-start; }
+.form, .form label { display: grid; gap: 8px; }
+.form { gap: 16px; }
+.form input, .form select { padding: 10px; font: inherit; border: 1px solid var(--border-weak); border-radius: 8px; }
+
+.edge { display: grid; place-items: center; cursor: pointer; border: 0; border-radius: var(--round-10); background: var(--fill-neutral-weak); width: 32px; height: 32px; flex: none; }
+.edge:last-child { margin-left: auto; }

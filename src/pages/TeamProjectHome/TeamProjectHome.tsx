@@ -8,8 +8,9 @@ import { Icon } from '../../components/Icon/Icon';
 import { Popup } from '../../components/Popup/Popup';
 import { ALL_PROJECTS_ID, Sidebar, type SidebarMenu } from '../../components/Sidebar/Sidebar';
 import { TabItem, Tabs } from '../../components/Tab/Tab';
+import { ProjectSchedule } from './ProjectSchedule';
 import { TaskBoard } from './TaskBoard';
-import { demoToday, getHomeProjects, homeUser, type BoardTask, type Project } from './projectData';
+import { demoToday, getHomeProjects, homeUser, type BoardTask, type Project, type ProjectEvent } from './projectData';
 import styles from './TeamProjectHome.module.css';
 
 const defaultProjects = getHomeProjects();
@@ -70,6 +71,7 @@ export function TeamProjectHome({ projects = defaultProjects, profile = homeUser
   const [projectId, setProjectId] = useState(projects[0]?.id);
   const [tab, setTab] = useState('홈');
   const [changedTasks, setChangedTasks] = useState<Record<string, BoardTask[]>>({});
+  const [addedEvents, setAddedEvents] = useState<Record<string, ProjectEvent[]>>({});
   const [changes, setChanges] = useState<Record<string, string[]>>({});
   const [dialog, setDialog] = useState<{ title: string; content: ReactNode } | null>(null);
   const project = projects.find((item) => item.id === projectId) ?? projects[0];
@@ -135,11 +137,11 @@ export function TeamProjectHome({ projects = defaultProjects, profile = homeUser
         {tab === '홈' && <ProjectSummary key={'summary-' + project.id} project={project} show={show} onFiles={() => setTab('첨부파일')} />}
         {(tab === '홈' || tab === '팀 태스크 관리') && <TaskBoard key={'tasks-' + project.id} tasks={tasks} today={today}
           initialView={initialView} onSave={saveTask} />}
-        {tab === '전체 일정' && <section className={styles.panel}><h2>전체 일정</h2>
-          {project.schedule.length ? <ul>{project.schedule.map((event) => <li key={event.startAt + event.title}>
-            <time dateTime={event.startAt}>{event.startAt.slice(0, 10)}</time> · {event.title}
-          </li>)}</ul> : <p>등록된 일정이 없습니다.</p>}
-        </section>}
+        {tab === '전체 일정' && <ProjectSchedule key={project.id} today={today}
+          events={[...project.schedule, ...(addedEvents[project.id] ?? [])]} onSaveTask={saveTask}
+          onAdd={(event) => setAddedEvents(previous => ({
+            ...previous, [project.id]: [...(previous[project.id] ?? []), event],
+          }))} />}
         {tab === '히스토리' && <section className={styles.panel}><h2>히스토리</h2>
           {changes[project.id]?.length ? <ul>{changes[project.id].map((label, i) => <li key={i}>{label}</li>)}</ul> : <p>이번 세션의 태스크 변경 내역이 없습니다.</p>}
         </section>}

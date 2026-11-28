@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { within, userEvent } from 'storybook/test';
 import { TeamProjectHome } from './TeamProjectHome';
 import { getHomeProjects } from './projectData';
 import avatar from './reference-avatar.png';
@@ -26,3 +27,30 @@ export const Figma: Story = { args: { projects: referenceProjects, today: '2026-
 export const Demo: Story = {};
 export const ListView: Story = { args: { initialView: 'list' } };
 export const EmptyBoard: Story = { args: { projects: [{ ...projects[0], tasks: [] }] } };
+
+export const ScheduleTimeline: Story = {
+  args: {
+    ...Figma.args, today: '2026-11-18',
+    projects: [{ ...referenceProjects[0], schedule: [
+      { title: '리서치', kind: 'milestone', startAt: '2026-11-10', endAt: '2026-11-18' },
+      { title: '리서치', kind: 'milestone', startAt: '2026-11-19', endAt: '2026-11-25' },
+      ...[[13, 13], [14, 14], [14, 15], [18, 18], [19, 19], [19, 20], [20, 21]].map(([start, end]) => ({
+        title: '회의', startAt: '2026-11-' + start + 'T11:00:00+09:00', endAt: '2026-11-' + end + 'T12:00:00+09:00',
+      })),
+    ] }, ...referenceProjects.slice(1)],
+  },
+  play: async ({ canvasElement }) => {
+    await userEvent.click(within(canvasElement).getByRole('tab', { name: '전체 일정' }));
+  },
+};
+
+export const ScheduleCalendar: Story = {
+  args: { ...Figma.args, projects: referenceProjects.map(project => ({
+    ...project, schedule: project.schedule.filter(event => event.kind === 'milestone'),
+  })) },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByRole('tab', { name: '전체 일정' }));
+    await userEvent.click(canvas.getByRole('button', { name: '캘린더' }));
+  },
+};

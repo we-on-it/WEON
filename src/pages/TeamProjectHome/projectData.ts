@@ -9,6 +9,15 @@ export type BoardTask = Pick<Task, 'id' | 'title' | 'status' | 'dueAt'> & {
   files: number;
 };
 
+export type ProjectEvent = {
+  title: string;
+  startAt: string;
+  endAt?: string | null;
+  allDay?: boolean;
+  kind?: 'milestone' | 'event';
+  color?: ProjectColor;
+};
+
 export type ProjectTemplate = { name: string; url: string; filename: string };
 export type Project = {
   id: string;
@@ -16,7 +25,7 @@ export type Project = {
   color: ProjectColor;
   description: string;
   tasks: BoardTask[];
-  schedule: { title: string; startAt: string }[];
+  schedule: ProjectEvent[];
   notice?: string;
   rules: string[];
   templates: ProjectTemplate[];
@@ -47,7 +56,13 @@ export function getHomeProjects(): Project[] {
     id: team.id, name: team.name, description: team.description, color: colors[index % colors.length],
     rules: [], templates: [],
     ...(team.id === 't1' ? miduSettings : {}),
-    schedule: getTeamEvents(team.id),
+    schedule: [
+      ...(team.id === 't1' ? [
+        { title: '리서치 · 사용자 인터뷰', kind: 'milestone' as const, startAt: '2026-11-04', endAt: '2026-11-11', color: 'pink' as const },
+        { title: '문제정의', kind: 'milestone' as const, startAt: '2026-11-12', endAt: '2026-11-17', color: 'orange' as const },
+      ] : []),
+      ...getTeamEvents(team.id),
+    ],
     tasks: getTeamTasks(team.id).map((task) => ({
       ...task, assignee: getUser(task.assigneeId)?.name ?? '', progress: demoProgress[task.status],
       comments: 0, files: 0,

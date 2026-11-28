@@ -201,6 +201,14 @@
   --accent-background-teal: var(--palette-teal-100);
   --accent-background-purple: var(--palette-purple-100);
   --accent-background-pink: var(--palette-pink-100);
+  --accent-background-orange-hover: var(--palette-orange-200);
+  --accent-background-teal-hover: var(--palette-teal-200);
+  --accent-background-purple-hover: var(--palette-purple-200);
+  --accent-background-pink-hover: var(--palette-pink-200);
+  --accent-background-orange-press: var(--palette-orange-200);
+  --accent-background-teal-press: var(--palette-teal-200);
+  --accent-background-purple-press: var(--palette-purple-200);
+  --accent-background-pink-press: var(--palette-pink-200);
 
   /* accent/foreground */
   --accent-foreground-pink: var(--palette-pink-600);

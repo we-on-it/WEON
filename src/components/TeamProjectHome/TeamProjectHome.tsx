@@ -70,14 +70,12 @@ export function TeamProjectHome({ projects = defaultProjects, profile = homeUser
   const [tab, setTab] = useState('홈');
   const [changedTasks, setChangedTasks] = useState<Record<string, BoardTask[]>>({});
   const [changes, setChanges] = useState<Record<string, string[]>>({});
-  const [mobileNav, setMobileNav] = useState(false);
   const [dialog, setDialog] = useState<{ title: string; content: ReactNode } | null>(null);
   const project = projects.find((item) => item.id === projectId) ?? projects[0];
   const tasks = project ? changedTasks[project.id] ?? project.tasks : [];
   const show = (title: string, content: ReactNode) => setDialog({ title, content });
 
   function selectProject(id: string) {
-    setMobileNav(false);
     if (id === ALL_PROJECTS_ID) {
       show('팀 프로젝트', <div className={styles.projectPicker}>{projects.map((item) =>
         <Button key={item.id} variant="neutral-weak" onClick={() => selectProject(item.id)}>{item.name}</Button>
@@ -90,7 +88,6 @@ export function TeamProjectHome({ projects = defaultProjects, profile = homeUser
   }
 
   function selectMenu(menu: SidebarMenu) {
-    setMobileNav(false);
     switch (menu) {
       case 'home': setTab('홈'); break;
       case 'team-project': selectProject(ALL_PROJECTS_ID); break;
@@ -110,10 +107,7 @@ export function TeamProjectHome({ projects = defaultProjects, profile = homeUser
 
   return (
     <div className={styles.page}>
-      <button className={styles.mobileMenu} aria-expanded={mobileNav} onClick={() => setMobileNav(!mobileNav)}>
-        <Icon name="list-bullet" /> 프로젝트 메뉴
-      </button>
-      <aside className={styles.rail} data-open={mobileNav}>
+      <aside className={styles.rail}>
         <Sidebar className={styles.sidebar} activeMenu="team-project" projects={projects} activeProjectId={project?.id}
           userName={profile.name} avatar={<Avatar initial={profile.name.charAt(0)} src={profile.avatarUrl ?? undefined} />}
           onMenuSelect={selectMenu} onProjectSelect={selectProject} onUserMenuClick={() => show('계정 정보', profile.name)} />

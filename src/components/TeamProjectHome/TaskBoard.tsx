@@ -75,8 +75,8 @@ export function TaskBoard({ tasks, today, initialView = 'board', onSave }: Props
             {(['board', 'list'] as const).map((mode) => (
               <button key={mode} aria-pressed={mode === view} aria-label={mode === 'board' ? '칸반 보기' : '목록 보기'}
                 onClick={() => setView(mode)}>{mode === 'board'
-                  ? <Icon name="kanban" fill={mode === view} size={20} />
-                  : <Icon name="list-bullet" size={20} />}</button>
+                  ? <Icon name="kanban" fill={mode === view} size={24} />
+                  : <Icon name="list-bullet" size={24} />}</button>
             ))}
           </div>
           <Button size="small" icon="plus" onClick={() => setEditing({

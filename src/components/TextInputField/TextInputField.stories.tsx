@@ -72,7 +72,7 @@ export const WithoutDescription: Story = {
 export const WithBadgeAndAction: Story = {
   args: {
     badge: 'AI 생성',
-    action: { label: 'AI로 다시 쓰기' },
+    action: { label: 'AI로 다시 쓰기', icon: 'ai' },
     defaultValue: 'AI가 만든 제목',
   },
 };

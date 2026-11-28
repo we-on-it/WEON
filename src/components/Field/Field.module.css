@@ -1,0 +1,55 @@
+/* Figma: TextInputField · TextAreaField 공통 header / footer */
+
+/* ── header: 라벨 + indicator + badge + (spacer) + action ── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-6);
+  width: 100%;
+  min-width: 0;
+}
+
+.label {
+  min-width: 0;
+  color: var(--foreground-primary);
+  font-size: var(--font-size-body1);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-text);
+}
+
+/* Figma에서 필드 안의 Badge는 모서리 10px (Badge 기본 square는 4px) */
+.header .badge {
+  border-radius: var(--round-10);
+}
+
+/* spacer 역할: action 버튼을 오른쪽 끝으로 밀어냅니다 */
+.action {
+  flex-shrink: 0;
+  margin-inline-start: auto;
+}
+
+/* ── footer: description 또는 error ─────────────────── */
+.footer {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--gap-8);
+  width: 100%;
+  min-width: 0;
+}
+
+.message {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  font-size: var(--font-size-caption1);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+}
+
+.description {
+  color: var(--foreground-quaternary);
+}
+
+.error {
+  color: var(--foreground-critical);
+}

@@ -102,7 +102,6 @@
 /* ── Item (MenuItem · ProjectItem 공통) ─────────────────── */
 .item {
   /* 상태·색별로 아래 변수만 바꿔 끼웁니다 */
-  --item-bg: var(--fill-transparent);
   --item-bg-hover: var(--fill-transparent-hover);
   --item-bg-pressed: var(--fill-transparent-pressed);
   --item-fg: var(--foreground-quaternary);
@@ -116,7 +115,7 @@
   padding: var(--padding-12) var(--padding-16);
   border: none;
   border-radius: var(--round-pill);
-  background: var(--item-bg);
+  background: var(--fill-transparent);
   color: var(--item-fg);
   font-family: inherit;
   font-size: var(--font-size-heading4);
@@ -173,33 +172,28 @@
 }
 
 .teal {
-  --project-bg: var(--accent-background-teal);
-  --project-bg-hover: var(--accent-background-teal-hover);
+  --project-bg-hover: var(--accent-background-teal);
   --project-bg-pressed: var(--accent-background-teal-press);
   --project-fg: var(--accent-foreground-teal);
 }
 .orange {
-  --project-bg: var(--accent-background-orange);
-  --project-bg-hover: var(--accent-background-orange-hover);
+  --project-bg-hover: var(--accent-background-orange);
   --project-bg-pressed: var(--accent-background-orange-press);
   --project-fg: var(--accent-foreground-orange);
 }
 .purple {
-  --project-bg: var(--accent-background-purple);
-  --project-bg-hover: var(--accent-background-purple-hover);
+  --project-bg-hover: var(--accent-background-purple);
   --project-bg-pressed: var(--accent-background-purple-press);
   --project-fg: var(--accent-foreground-purple);
 }
 .pink {
-  --project-bg: var(--accent-background-pink);
-  --project-bg-hover: var(--accent-background-pink-hover);
+  --project-bg-hover: var(--accent-background-pink);
   --project-bg-pressed: var(--accent-background-pink-press);
   --project-fg: var(--accent-foreground-pink);
 }
 
 /* 선택 안 됨: 회색 hover·press (MenuItem과 같음). 선택됨: 프로젝트 색 */
 .project.selected {
-  --item-bg: var(--project-bg);
   --item-bg-hover: var(--project-bg-hover);
   --item-bg-pressed: var(--project-bg-pressed);
   --item-fg: var(--project-fg);

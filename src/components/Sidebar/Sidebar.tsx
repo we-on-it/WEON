@@ -86,7 +86,7 @@ export type SidebarProjectItemProps = ItemElementProps & {
   label: ReactNode;
   /** Figma `color`. 프로젝트 색 (기본 teal) */
   color?: ProjectColor;
-  /** Figma `selected`. 선택되면 프로젝트 색 배경 + chevron 표시 */
+  /** 선택된 프로젝트는 이름과 화살표를 프로젝트 색으로 표시합니다. */
   selected?: boolean;
 };
 

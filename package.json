@@ -10,6 +10,8 @@
     "tokens": "node scripts/build-colors.mjs"
   },
   "dependencies": {
+    "@radix-ui/react-dropdown-menu": "^2.2.1",
+    "@radix-ui/react-select": "^2.4.1",
     "@radix-ui/react-tabs": "^1.2.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"

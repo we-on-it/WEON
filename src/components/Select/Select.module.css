@@ -1,0 +1,111 @@
+/* Figma: Components / Select (node 867:18319) */
+
+/* W 320 · H 40 · padding 8 / 16 · gap 12 · radius 16 (TextInput과 같은 박스)
+ * 배경 fill/neutral-weak · 테두리 border/weak 1px */
+.trigger {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--gap-12);
+  width: 320px;
+  max-width: 100%;
+  height: 40px;
+  margin: 0;
+  padding: var(--padding-8) var(--padding-16);
+  border: 1px solid var(--border-weak);
+  border-radius: var(--round-16);
+  background: var(--fill-neutral-weak);
+  color: var(--foreground-secondary);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 120ms ease;
+}
+
+/* state=open */
+.trigger[data-state='open'] {
+  border-color: var(--border-focus);
+}
+
+/* 키보드 포커스도 open과 같은 테두리 */
+.trigger:focus-visible {
+  border-color: var(--border-focus);
+}
+
+/* invalid=true */
+.invalid,
+.invalid[data-state='open'] {
+  border-color: var(--border-critical);
+}
+
+/* disabled=true: opacity 40% */
+.trigger:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.slot {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+/* value: Body2 Medium · secondary / placeholder: quaternary */
+.value {
+  min-width: 0;
+  overflow: hidden;
+  font-size: var(--font-size-body2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.trigger[data-placeholder] .value {
+  color: var(--foreground-quaternary);
+}
+
+/* description: Caption2 Medium · tertiary */
+.description {
+  flex-shrink: 0;
+  color: var(--foreground-tertiary);
+  font-size: var(--font-size-caption2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+  white-space: nowrap;
+}
+
+.spacer {
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+/* chevron 16 · foreground/primary · default = down, open = up */
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--foreground-primary);
+}
+
+.chevronUp,
+.trigger[data-state='open'] .chevronDown {
+  display: none;
+}
+
+.trigger[data-state='open'] .chevronUp {
+  display: block;
+}
+
+/* 메뉴는 트리거 너비에 맞춤 (Menu 모양은 Dropdown.module.css .menu) */
+.content {
+  width: var(--radix-select-trigger-width);
+  max-height: var(--radix-select-content-available-height);
+}
+
+.viewport {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-2);
+}

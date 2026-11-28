@@ -1,0 +1,17 @@
+/* TODO(Priority): 임시 아이콘 색. Priority 컴포넌트가 생기면 이 파일은 지워 주세요.
+ * Figma 화면 기준 추정값 — 최상 빨강 · 높음 주황 · 보통 노랑 · 낮음 회색 */
+.highest {
+  color: var(--foreground-critical);
+}
+
+.high {
+  color: var(--accent-foreground-orange);
+}
+
+.medium {
+  color: var(--foreground-warning);
+}
+
+.low {
+  color: var(--foreground-tertiary);
+}

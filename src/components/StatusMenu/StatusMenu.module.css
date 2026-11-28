@@ -1,0 +1,42 @@
+/* TODO(StatusChip): 임시 칩 스타일. StatusChip 컴포넌트가 생기면 이 파일의 tempChip 부분은 지워 주세요.
+ * Figma StatusChip: Hug · 최소 높이 32 · padding 2 / 12 · gap 4 · pill · Body2 SemiBold */
+.tempChip {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-4);
+  min-height: 32px;
+  padding: 2px var(--padding-12);
+  border-radius: var(--round-pill);
+  background: var(--chip-bg);
+  color: var(--chip-fg);
+  font-size: var(--font-size-body2);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-text);
+  white-space: nowrap;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* 시작 전 */
+.todo {
+  --chip-bg: var(--fill-neutral-weak);
+  --chip-fg: var(--foreground-tertiary);
+}
+
+/* 진행 중 */
+.in_progress {
+  --chip-bg: var(--fill-brand-weak);
+  --chip-fg: var(--foreground-brand);
+}
+
+/* 완료 */
+.done {
+  --chip-bg: var(--fill-success-weak);
+  --chip-fg: var(--foreground-success);
+}

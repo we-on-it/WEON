@@ -1,8 +1,9 @@
 import { getCurrentUser, getMyTeams, getTeamEvents, getTeamTasks, getUser, MOCK_NOW } from '../../mocks/queries';
-import type { Task, TaskStatus } from '../../mocks/types';
+import type { Task } from '../../mocks/types';
 import type { ProjectColor } from '../../components/Sidebar/Sidebar';
 
 export type BoardTask = Pick<Task, 'id' | 'title' | 'status' | 'dueAt'> & {
+  siren?: boolean;
   assignee: string;
   progress: number;
   comments: number;
@@ -49,7 +50,6 @@ const miduSettings = {
 };
 
 const colors: ProjectColor[] = ['teal', 'orange', 'purple', 'pink'];
-const demoProgress: Record<TaskStatus, number> = { todo: 0, in_progress: 20, done: 100 };
 
 export function getHomeProjects(): Project[] {
   return getMyTeams().map((team, index) => ({
@@ -64,7 +64,7 @@ export function getHomeProjects(): Project[] {
       ...getTeamEvents(team.id),
     ],
     tasks: getTeamTasks(team.id).map((task) => ({
-      ...task, assignee: getUser(task.assigneeId)?.name ?? '', progress: demoProgress[task.status],
+      ...task, assignee: getUser(task.assigneeId)?.name ?? '',
       comments: 0, files: 0,
     })),
   }));
@@ -75,12 +75,11 @@ export const demoToday = MOCK_NOW.slice(0, 10);
 
 /** WEON 데모의 마감 시각은 KST로 저장됩니다. */
 export function deadline(dueAt: string | null, today: string) {
-  if (!dueAt) return { day: '마감 미정', date: '미정', level: 'low' } as const;
+  if (!dueAt) return { day: '마감 미정', date: '미정', isToday: false } as const;
   const days = Math.round((Date.parse(dueAt.slice(0, 10)) - Date.parse(today)) / 86_400_000);
-  const level = days <= 1 ? 'highest' : days <= 3 ? 'high' : days <= 7 ? 'medium' : 'low';
   return {
-    day: days === 0 ? 'D-day' : days < 0 ? 'D+' + Math.abs(days) : 'D-' + days,
+    day: days === 0 ? 'D-DAY' : days < 0 ? 'D+' + Math.abs(days) : 'D-' + days,
     date: dueAt.slice(5, 10).replace('-', '/') + ' ' + dueAt.slice(11, 16),
-    level,
+    isToday: days === 0,
   } as const;
 }

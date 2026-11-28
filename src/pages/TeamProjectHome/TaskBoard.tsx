@@ -3,7 +3,6 @@ import { Badge } from '../../components/Badge/Badge';
 import { Button } from '../../components/Button/Button';
 import { Icon } from '../../components/Icon/Icon';
 import { Popup } from '../../components/Popup/Popup';
-import { TempPriorityIcon } from '../../components/PriorityMenu/PriorityMenu';
 import { STATUS_LABEL, TASK_STATUSES, TempStatusChip } from '../../components/StatusMenu/StatusMenu';
 import { TextInputField } from '../../components/TextInputField/TextInputField';
 import { deadline, type BoardTask } from './projectData';
@@ -21,7 +20,10 @@ function TaskCard({ task, today, onEdit }: { task: BoardTask; today: string; onE
   return (
     <article className={styles.task}>
       <div className={styles.row}>
-        <strong className={styles.inline}><TempPriorityIcon level={due.level} />{due.day}</strong>
+        <strong className={styles.inline} data-due-today={due.isToday}>
+          {task.siren && <Icon name="siren" size={16} className={styles.siren} title="사이렌" />}
+          {due.day}
+        </strong>
         <button className={styles.iconButton} aria-label={task.title + ' 편집'} onClick={onEdit}><Icon name="more" /></button>
       </div>
       <div>

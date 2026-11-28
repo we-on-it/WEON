@@ -1,7 +1,7 @@
 import { useState, type CSSProperties } from 'react';
-import { Button } from '../Button/Button';
-import { Icon } from '../Icon/Icon';
-import { Popup } from '../Popup/Popup';
+import { Button } from '../../components/Button/Button';
+import { Icon } from '../../components/Icon/Icon';
+import { Popup } from '../../components/Popup/Popup';
 import { TaskEditor } from './TaskBoard';
 import type { BoardTask, ProjectEvent } from './projectData';
 import styles from './ProjectSchedule.module.css';

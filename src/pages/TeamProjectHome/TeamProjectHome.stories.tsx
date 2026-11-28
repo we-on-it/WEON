@@ -18,7 +18,8 @@ const referenceProjects = projects.map((project, index) => {
   if (index !== 0) return { ...project, name: index === 1 ? '졸준위' : '캡스톤' };
   return { ...project, tasks: (['todo', 'in_progress', 'in_progress', 'in_progress', 'done', 'done'] as const)
     .map((status, i) => ({
-      id: 'poster-' + i, title: '전시 포스터 시안 공유하기', status, dueAt: '2026-11-13T18:00:00+09:00',
+      id: 'poster-' + i, title: '전시 포스터 시안 공유하기', status, siren: i === 0 || i >= 3,
+      dueAt: status === 'done' ? '2026-11-12T18:00:00+09:00' : '2026-11-13T18:00:00+09:00',
       assignee: '', progress: status === 'done' ? 100 : status === 'in_progress' ? 20 : 0, comments: 0, files: 0,
     })) };
 });

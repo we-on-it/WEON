@@ -109,7 +109,7 @@ export function TeamProjectHome({ projects = defaultProjects, profile = homeUser
   }
 
   return (
-    <div className={styles.page}>
+    <div className={styles.page} data-home={tab === '홈'}>
       <aside className={styles.rail}>
         <Sidebar className={styles.sidebar} activeMenu="team-project" projects={projects} activeProjectId={project?.id}
           userName={profile.name} avatar={<Avatar initial={profile.name.charAt(0)} src={profile.avatarUrl ?? undefined} />}

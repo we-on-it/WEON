@@ -43,6 +43,31 @@ export function MenuItemContent({
   );
 }
 
+/**
+ * 안 고른 체크박스: Icon/check-square(24)에서 체크 표시를 뺀 빈 상자.
+ * 상자 모양(외곽·두께·모서리)은 check-square 원본 경로와 같아요.
+ */
+function EmptyCheckbox() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden
+      focusable="false"
+      className={styles.checkbox}
+    >
+      <path
+        fillRule="evenodd"
+        d="M6.68 20.21C5.73 20.21 5.01 19.96 4.53 19.48C4.04 19 3.8 18.29 3.8 17.36V6.65C3.8 5.71 4.04 5 4.53 4.52C5.01 4.04 5.73 3.8 6.68 3.8H17.32C18.27 3.8 18.99 4.04 19.48 4.53C19.96 5.01 20.21 5.72 20.21 6.65V17.36C20.21 18.29 19.96 19 19.48 19.48C18.99 19.96 18.27 20.21 17.32 20.21H6.68ZM6.79 18.47H17.22C17.62 18.47 17.93 18.37 18.15 18.16C18.37 17.95 18.47 17.63 18.47 17.2V6.8C18.47 6.38 18.37 6.06 18.15 5.84C17.93 5.63 17.62 5.53 17.22 5.53H6.79C6.38 5.53 6.06 5.63 5.84 5.84C5.63 6.06 5.53 6.38 5.53 6.8V17.2C5.53 17.63 5.63 17.95 5.84 18.16C6.06 18.37 6.38 18.47 6.79 18.47Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
 /** 18×18 체크 · foreground/brand. selected일 때만 보여요 */
 function Check() {
   return <Icon name="check" size={18} className={styles.check} />;
@@ -184,7 +209,8 @@ export type MenuCheckboxItemProps = Omit<MenuItemContentProps, 'leading'> & {
 };
 
 /**
- * 여러 개 고르기. Figma 규칙대로 leading에 Icon/check-square(24)가 오고 selected 배경·check는 쓰지 않아요.
+ * 여러 개 고르기. leading에 체크박스(24)가 오고 selected 배경·check는 쓰지 않아요.
+ * 고름 = Icon/check-square 채움, 안 고름 = 체크 없는 빈 상자.
  * 하나 고를 때마다 메뉴가 닫히지 않습니다.
  */
 export function MenuCheckboxItem({
@@ -204,7 +230,13 @@ export function MenuCheckboxItem({
     >
       <MenuItemContent
         {...content}
-        leading={<Icon name="check-square" fill={checked} size={24} className={styles.checkbox} />}
+        leading={
+          checked ? (
+            <Icon name="check-square" fill size={24} className={styles.checkbox} />
+          ) : (
+            <EmptyCheckbox />
+          )
+        }
       />
     </RadixMenu.CheckboxItem>
   );

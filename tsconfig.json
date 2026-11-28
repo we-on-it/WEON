@@ -11,5 +11,5 @@
     "isolatedModules": true,
     "allowImportingTsExtensions": true
   },
-  "include": ["src", ".storybook"]
+  "include": ["src", "team-project-home", ".storybook"]
 }

@@ -64,6 +64,10 @@ export const getMyTasks = (): Task[] =>
 
 export const getTeamTasks = (teamId: ID): Task[] => tasks.filter((k) => k.teamId === teamId);
 
+export const getTeamEvents = (teamId: ID): ScheduleEvent[] =>
+  events.filter((event) => event.teamId === teamId)
+    .sort((a, b) => Date.parse(a.startAt) - Date.parse(b.startAt));
+
 /** 내 알림, 최신순 */
 export const getMyNotifications = () =>
   notifications

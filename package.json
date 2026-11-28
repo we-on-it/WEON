@@ -10,6 +10,13 @@
     "tokens": "node scripts/build-colors.mjs"
   },
   "dependencies": {
+    "@tiptap/extension-highlight": "^3.35.1",
+    "@tiptap/extension-text-align": "^3.35.1",
+    "@tiptap/extension-text-style": "^3.35.1",
+    "@tiptap/extensions": "^3.35.1",
+    "@tiptap/pm": "^3.35.1",
+    "@tiptap/react": "^3.35.1",
+    "@tiptap/starter-kit": "^3.35.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },

@@ -1,0 +1,248 @@
+/* 문서 편집기. 색은 semantic 변수만 사용 */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-weak);
+  border-radius: 12px;
+  background: var(--fill-white);
+  color: var(--foreground-primary);
+}
+
+/* ── 툴바 ───────────────────────────────────────────── */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border-weak);
+  border-radius: 12px 12px 0 0;
+  background: var(--fill-white);
+}
+
+.tool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: var(--fill-transparent);
+  color: var(--foreground-secondary);
+  font-size: var(--font-size-body2);
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+.tool:hover:not(:disabled) {
+  background: var(--fill-transparent-hover);
+}
+.tool:active:not(:disabled) {
+  background: var(--fill-transparent-pressed);
+}
+.tool[data-active] {
+  background: var(--fill-brand-weak);
+  color: var(--foreground-brand);
+}
+.tool:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.tool:focus-visible,
+.select:focus-visible,
+.swatch:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+.select {
+  height: 32px;
+  padding: 0 8px;
+  border: none;
+  border-radius: 8px;
+  background: var(--fill-transparent);
+  color: var(--foreground-primary);
+  font-size: var(--font-size-body2);
+  cursor: pointer;
+}
+.select:hover {
+  background: var(--fill-transparent-hover);
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  margin: 0 4px;
+  background: var(--border-weak);
+}
+
+/* ── 팝오버 (색상·링크) ─────────────────────────────── */
+.anchor {
+  position: relative;
+}
+.popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 10;
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--background-floated, var(--fill-white));
+  box-shadow: var(--shadow-normal);
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(7, 28px);
+  gap: 4px;
+}
+.swatch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 1px var(--border-weak);
+  background: var(--fill-white);
+  color: var(--foreground-tertiary);
+  font-size: var(--font-size-body2);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+}
+.swatch[data-selected] {
+  box-shadow: inset 0 0 0 2px var(--border-focus);
+}
+
+.linkForm {
+  display: flex;
+  gap: 6px;
+  width: 300px;
+}
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--border-weak);
+  border-radius: 8px;
+  background: var(--fill-white);
+  color: var(--foreground-primary);
+  font-size: var(--font-size-body2);
+}
+.input:focus {
+  outline: 2px solid var(--border-focus);
+  outline-offset: -1px;
+}
+.applyButton,
+.removeButton {
+  height: 32px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: var(--font-size-caption1);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.applyButton {
+  background: var(--fill-brand);
+  color: var(--foreground-inverted);
+}
+.applyButton:hover {
+  background: var(--fill-brand-hover);
+}
+.removeButton {
+  background: var(--fill-critical-weak);
+  color: var(--foreground-critical);
+}
+
+/* ── 본문 영역 (글이 써지는 곳) ─────────────────────── */
+.content {
+  flex: 1;
+}
+.content :global(.tiptap) {
+  min-height: 320px;
+  padding: 24px 28px;
+  outline: none;
+  font-size: var(--font-size-body1);
+  line-height: 1.7;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.content :global(.tiptap > * + *) {
+  margin-top: 0.6em;
+}
+.content :global(.tiptap p) {
+  margin: 0;
+}
+.content :global(.tiptap h1),
+.content :global(.tiptap h2),
+.content :global(.tiptap h3) {
+  margin: 1.2em 0 0.4em;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+}
+.content :global(.tiptap > :first-child) {
+  margin-top: 0;
+}
+.content :global(.tiptap h1) {
+  font-size: var(--font-size-heading2);
+}
+.content :global(.tiptap h2) {
+  font-size: var(--font-size-heading3);
+}
+.content :global(.tiptap h3) {
+  font-size: var(--font-size-heading4);
+}
+.content :global(.tiptap ul),
+.content :global(.tiptap ol) {
+  margin: 0.4em 0;
+  padding-left: 1.5em;
+}
+.content :global(.tiptap ul) {
+  list-style: disc;
+}
+.content :global(.tiptap ol) {
+  list-style: decimal;
+}
+.content :global(.tiptap li p) {
+  margin: 0;
+}
+.content :global(.tiptap blockquote) {
+  margin: 0.6em 0;
+  padding-left: 1em;
+  border-left: 3px solid var(--border-weak);
+  color: var(--foreground-secondary);
+}
+.content :global(.tiptap hr) {
+  margin: 1.2em 0;
+  border: none;
+  border-top: 1px solid var(--border-weak);
+}
+.content :global(.tiptap a) {
+  color: var(--foreground-brand);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.content :global(.tiptap mark) {
+  padding: 0 2px;
+  border-radius: 3px;
+  color: inherit;
+}
+/* 빈 문서 안내 문구 */
+.content :global(.tiptap p.is-editor-empty:first-child::before) {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  color: var(--foreground-quaternary);
+  pointer-events: none;
+}

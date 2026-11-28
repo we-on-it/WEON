@@ -4,13 +4,15 @@ import {
   CURRENT_USER_ID,
   MOCK_NOW,
   events,
+  milestones,
   notifications,
   tasks,
   teamMembers,
   teams,
   users,
 } from './db';
-import type { ID, ScheduleEvent, Task, Team, TeamRole, User } from './types';
+import { REQUEST_TYPES } from './types';
+import type { ID, Milestone, Notification, ScheduleEvent, Task, Team, TeamRole, User } from './types';
 
 export { MOCK_NOW };
 
@@ -69,3 +71,18 @@ export const getMyNotifications = () =>
   notifications
     .filter((n) => n.userId === CURRENT_USER_ID)
     .sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt));
+
+/** 나에게 온 요청(보고·수정·찌르기·리마인드) 중 안 읽은 것, 최신순 */
+export const getMyUnreadRequests = (): Notification[] =>
+  getMyNotifications().filter((n) => !n.read && REQUEST_TYPES.includes(n.type));
+
+export const getMilestone = (id: ID): Milestone | undefined => milestones.find((m) => m.id === id);
+
+/** 내 팀의 마일스톤 중 지금(MOCK_NOW) 기간 안에 있는 것. 끝나는 날 → 시작한 날 순 */
+export const getMyActiveMilestones = (): Milestone[] => {
+  const ids = myTeamIds();
+  const now = Date.parse(MOCK_NOW);
+  return milestones
+    .filter((m) => ids.has(m.teamId) && Date.parse(m.startAt) <= now && now <= Date.parse(m.endAt))
+    .sort((a, b) => Date.parse(a.endAt) - Date.parse(b.endAt) || Date.parse(a.startAt) - Date.parse(b.startAt));
+};

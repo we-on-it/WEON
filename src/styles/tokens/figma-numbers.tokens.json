@@ -112,6 +112,16 @@
         ]
       }
     },
+    "12": {
+      "$type": "number",
+      "$value": 12,
+      "$extensions": {
+        "com.figma.variableId": "VariableID:921:1674",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ]
+      }
+    },
     "16": {
       "$type": "number",
       "$value": 16,

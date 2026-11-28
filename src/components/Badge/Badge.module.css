@@ -5,15 +5,16 @@
   --badge-bg: transparent;
   --badge-fg: var(--foreground-primary);
 
-  /* 사이즈별 값 */
-  --badge-min-width: 26px;
+  /* 사이즈별 값. 높이 = 최소 너비라서 숫자 한 자리를 넣으면 pill이 원형이 돼요 */
+  --badge-size: 26px;
   --badge-px: var(--padding-6);
 
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: var(--badge-min-width);
+  min-width: var(--badge-size);
+  min-height: var(--badge-size);
   padding: var(--padding-4) var(--badge-px);
   border-radius: var(--round-4);
   background: var(--badge-bg);
@@ -25,21 +26,21 @@
 }
 
 /* ── Size ───────────────────────────────────────────── */
-/* small: Caption2/Medium, medium: Caption1/Medium, large: Body2/SemiBold */
+/* 높이 26 · 28 · 31. small: Caption2/Medium, medium: Caption1/Medium, large: Body2/SemiBold */
 .small {
-  --badge-min-width: 26px;
+  --badge-size: 26px;
   --badge-px: var(--padding-6);
   font-size: var(--font-size-caption2);
   font-weight: var(--font-weight-medium);
 }
 .medium {
-  --badge-min-width: 28px;
+  --badge-size: 28px;
   --badge-px: var(--padding-8);
   font-size: var(--font-size-caption1);
   font-weight: var(--font-weight-medium);
 }
 .large {
-  --badge-min-width: 31px;
+  --badge-size: 31px;
   --badge-px: var(--padding-8);
   font-size: var(--font-size-body2);
   font-weight: var(--font-weight-semibold);

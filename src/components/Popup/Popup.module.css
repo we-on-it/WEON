@@ -27,8 +27,7 @@
   overflow: hidden;
   border-radius: 24px;
   background: var(--background-floated);
-  /* Figma 값 그대로 (토큰 --shadow-weak는 알파 0.07이라 다름) */
-  box-shadow: 0 12px 40px 0 rgb(0 0 0 / 0.12);
+  box-shadow: var(--shadow-weak);
   color: var(--foreground-primary);
 }
 .popup:focus {

@@ -28,16 +28,16 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {};
 
 const variants = [
-  { name: 'default · empty', state: 'default', invalid: false, disabled: false, value: undefined },
-  { name: 'default · has value', state: 'default', invalid: false, disabled: false, value: '입력값' },
-  { name: 'focus · empty', state: 'focus', invalid: false, disabled: false, value: undefined },
-  { name: 'focus · has value', state: 'focus', invalid: false, disabled: false, value: '입력값' },
-  { name: 'default · invalid · empty', state: 'default', invalid: true, disabled: false, value: undefined },
-  { name: 'default · invalid · has value', state: 'default', invalid: true, disabled: false, value: '입력값' },
-  { name: 'focus · invalid · empty', state: 'focus', invalid: true, disabled: false, value: undefined },
-  { name: 'focus · invalid · has value', state: 'focus', invalid: true, disabled: false, value: '입력값' },
-  { name: 'disabled · empty', state: 'default', invalid: false, disabled: true, value: undefined },
-  { name: 'disabled · has value', state: 'default', invalid: false, disabled: true, value: '입력값' },
+  { name: 'default · empty', state: 'default', invalid: false, disabled: false, defaultValue: undefined },
+  { name: 'default · has value', state: 'default', invalid: false, disabled: false, defaultValue: '입력값' },
+  { name: 'focus · empty', state: 'focus', invalid: false, disabled: false, defaultValue: undefined },
+  { name: 'focus · has value', state: 'focus', invalid: false, disabled: false, defaultValue: '입력값' },
+  { name: 'default · invalid · empty', state: 'default', invalid: true, disabled: false, defaultValue: undefined },
+  { name: 'default · invalid · has value', state: 'default', invalid: true, disabled: false, defaultValue: '입력값' },
+  { name: 'focus · invalid · empty', state: 'focus', invalid: true, disabled: false, defaultValue: undefined },
+  { name: 'focus · invalid · has value', state: 'focus', invalid: true, disabled: false, defaultValue: '입력값' },
+  { name: 'disabled · empty', state: 'default', invalid: false, disabled: true, defaultValue: undefined },
+  { name: 'disabled · has value', state: 'default', invalid: false, disabled: true, defaultValue: '입력값' },
 ] as const;
 
 const galleryStyle = {
@@ -65,5 +65,5 @@ export const Variants: Story = {
 };
 
 export const WithSuffix: Story = {
-  args: { showSuffix: true, value: '입력값' },
+  args: { showSuffix: true, defaultValue: '입력값' },
 };

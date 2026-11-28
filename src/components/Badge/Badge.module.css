@@ -1,0 +1,111 @@
+/* Figma: Components / Badge (node 817:15858) */
+
+.badge {
+  /* 타입별로 아래 변수만 바꿔 끼웁니다 */
+  --badge-bg: transparent;
+  --badge-fg: var(--foreground-primary);
+
+  /* 사이즈별 값 */
+  --badge-min-width: 26px;
+  --badge-px: var(--padding-6);
+
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--badge-min-width);
+  padding: var(--padding-4) var(--badge-px);
+  border-radius: var(--round-4);
+  background: var(--badge-bg);
+  color: var(--badge-fg);
+  line-height: var(--line-height-text);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+/* ── Size ───────────────────────────────────────────── */
+/* small: Caption2/Medium, medium: Caption1/Medium, large: Body2/SemiBold */
+.small {
+  --badge-min-width: 26px;
+  --badge-px: var(--padding-6);
+  font-size: var(--font-size-caption2);
+  font-weight: var(--font-weight-medium);
+}
+.medium {
+  --badge-min-width: 28px;
+  --badge-px: var(--padding-8);
+  font-size: var(--font-size-caption1);
+  font-weight: var(--font-weight-medium);
+}
+.large {
+  --badge-min-width: 31px;
+  --badge-px: var(--padding-8);
+  font-size: var(--font-size-body2);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ── Shape ──────────────────────────────────────────── */
+.square {
+  border-radius: var(--round-4);
+}
+.pill {
+  border-radius: var(--round-pill);
+}
+
+/* ── Type ───────────────────────────────────────────── */
+.neutral-solid {
+  --badge-bg: var(--fill-neutral);
+  --badge-fg: var(--foreground-inverted);
+}
+.neutral-weak {
+  --badge-bg: var(--fill-neutral-weak);
+  --badge-fg: var(--foreground-tertiary);
+}
+.brand-weak {
+  --badge-bg: var(--fill-brand-weak);
+  --badge-fg: var(--foreground-brand);
+}
+.critical-weak {
+  --badge-bg: var(--fill-critical-weak);
+  --badge-fg: var(--foreground-critical);
+}
+.warning-weak {
+  --badge-bg: var(--fill-warning-weak);
+  --badge-fg: var(--foreground-warning);
+}
+.critical-solid {
+  --badge-bg: var(--fill-critical);
+  --badge-fg: var(--foreground-inverted);
+}
+.critical-ghost {
+  --badge-fg: var(--foreground-critical);
+}
+.neutral-ghost {
+  --badge-fg: var(--foreground-tertiary);
+}
+
+/* AI: 배경과 글자 모두 그라디언트 */
+.ai {
+  --badge-bg: var(--fill-ai-gradient);
+}
+.ai .label {
+  background: var(--foreground-ai-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 팀 구분 색 (accent) */
+.team1 {
+  --badge-bg: var(--accent-background-pink);
+  --badge-fg: var(--accent-foreground-pink);
+}
+.team2 {
+  --badge-bg: var(--accent-background-orange);
+  --badge-fg: var(--accent-foreground-orange);
+}
+.team3 {
+  --badge-bg: var(--accent-background-teal);
+  --badge-fg: var(--accent-foreground-teal);
+}

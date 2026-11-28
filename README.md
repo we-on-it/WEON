@@ -48,7 +48,7 @@ git push -u origin feat/login-page    # 3. 커밋 후 push
 ## 스토리북
 
 팀 프로젝트 홈은 `npm ci` 후 `npm run dev`를 실행하고 `/team-project-home/`에서 확인합니다.
-Storybook의 `Screens/TeamProjectHome`에는 실제 데모 데이터 화면과 Figma 비교용 화면, 목록 보기, 빈 보드가 있습니다.
+Storybook의 `Pages/TeamProjectHome`에는 실제 데모 데이터 화면과 Figma 비교용 화면, 목록 보기, 빈 보드가 있습니다.
 
 ```bash
 npm install
@@ -57,6 +57,7 @@ npm run build-storybook  # storybook-static/ 로 정적 빌드
 ```
 
 - 컴포넌트는 `src/components/<이름>/` 아래에 `컴포넌트.tsx` + `컴포넌트.stories.tsx`로 둡니다
+- 화면(페이지)은 `src/pages/<이름>/` 아래에 두고, 스토리 제목은 `Pages/<이름>`으로 씁니다
 - 전역 폰트 설정은 `src/styles/global.css`, 웹폰트 링크는 `.storybook/preview-head.html`
 
 ## 컬러
@@ -124,7 +125,7 @@ npm run tokens   # JSON → colors.css, numbers.css 재생성
 
 새 화면을 weonit.kr에 올리려면:
 
-1. 루트에 `<경로>/index.html` + `<경로>/main.tsx` 진입점을 만든다 (`my-tasks/` 참고)
+1. 화면은 `src/pages/<이름>/`에 만들고, 루트에 `<경로>/index.html` + `<경로>/main.tsx` 진입점을 만든다 (`my-tasks/` 참고)
 2. `vite.config.ts`의 `input`에 `'<경로>/index.html'` 추가
 3. 루트 `index.html` 목록에 링크 추가
 

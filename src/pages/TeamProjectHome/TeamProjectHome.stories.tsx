@@ -4,7 +4,7 @@ import { getHomeProjects } from './projectData';
 import avatar from './reference-avatar.png';
 
 const meta = {
-  title: 'Screens/TeamProjectHome',
+  title: 'Pages/TeamProjectHome',
   component: TeamProjectHome,
   parameters: { layout: 'fullscreen' },
 } satisfies Meta<typeof TeamProjectHome>;

@@ -1,6 +1,6 @@
 import { getCurrentUser, getMyTeams, getTeamEvents, getTeamTasks, getUser, MOCK_NOW } from '../../mocks/queries';
 import type { Task, TaskStatus } from '../../mocks/types';
-import type { ProjectColor } from '../Sidebar/Sidebar';
+import type { ProjectColor } from '../../components/Sidebar/Sidebar';
 
 export type BoardTask = Pick<Task, 'id' | 'title' | 'status' | 'dueAt'> & {
   assignee: string;

@@ -61,9 +61,6 @@ export interface Milestone {
 
 export type TaskStatus = 'todo' | 'in_progress' | 'done';
 
-/** 우선순위 (PriorityMenu의 PriorityLevel과 같은 값) */
-export type TaskPriority = 'highest' | 'high' | 'medium' | 'low';
-
 /** 할 일. teamId가 null이면 개인 태스크 */
 export interface Task {
   id: ID;
@@ -72,8 +69,8 @@ export interface Task {
   title: string;
   status: TaskStatus;
   progress: number; // 0~100
-  /** 직접 고른 우선순위. null이면 마감일로 자동 산정 */
-  priority: TaskPriority | null;
+  /** 본인이 켠 사이렌 표시. 중요한 태스크 맨 위로 올라가요 */
+  siren: boolean;
   assigneeId: ID;
   dueAt: string | null;
   createdBy: ID;

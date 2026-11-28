@@ -112,28 +112,28 @@ export const milestones: Milestone[] = [
 // 한서윤(u1)의 미완료 태스크는 나의 태스크 홈(Figma 454:18251)과 맞춰 둠
 export const tasks: Task[] = [
   // MIDU
-  { id: 'k1', teamId: 't1', milestoneId: 'm1', title: '사용자 인터뷰 결과 정리', status: 'done', progress: 100, priority: null, assigneeId: 'u1', dueAt: '2026-11-09T23:59:00+09:00', createdBy: 'u2', createdAt: '2026-11-03T12:00:00+09:00' },
-  { id: 'k2', teamId: 't1', milestoneId: 'm4', title: '중간 발표 자료 3~5장 작성', status: 'in_progress', progress: 40, priority: null, assigneeId: 'u4', dueAt: '2026-11-11T19:00:00+09:00', createdBy: 'u2', createdAt: '2026-11-07T10:00:00+09:00' },
-  { id: 'k3', teamId: 't1', milestoneId: null, title: '프로토타입 플로우 수정', status: 'todo', progress: 0, priority: null, assigneeId: 'u3', dueAt: '2026-11-12T23:59:00+09:00', createdBy: 'u2', createdAt: '2026-11-08T14:00:00+09:00' },
-  { id: 'k4', teamId: 't1', milestoneId: 'm4', title: '발표 대본 작성', status: 'todo', progress: 0, priority: null, assigneeId: 'u4', dueAt: '2026-11-12T23:59:00+09:00', createdBy: 'u2', createdAt: '2026-11-08T14:05:00+09:00' },
-  { id: 'k14', teamId: 't1', milestoneId: 'm1', title: '인터뷰 결과 요약', status: 'in_progress', progress: 70, priority: null, assigneeId: 'u1', dueAt: '2026-11-10T23:59:00+09:00', createdBy: 'u2', createdAt: '2026-11-05T10:00:00+09:00' },
-  { id: 'k16', teamId: 't1', milestoneId: 'm4', title: '발표 스크립트 초안', status: 'in_progress', progress: 10, priority: 'high', assigneeId: 'u1', dueAt: '2026-11-17T23:59:00+09:00', createdBy: 'u2', createdAt: '2026-11-09T10:00:00+09:00' },
+  { id: 'k1', teamId: 't1', milestoneId: 'm1', title: '사용자 인터뷰 결과 정리', status: 'done', progress: 100, siren: false, assigneeId: 'u1', dueAt: '2026-11-09T23:59:00+09:00', createdBy: 'u2', createdAt: '2026-11-03T12:00:00+09:00' },
+  { id: 'k2', teamId: 't1', milestoneId: 'm4', title: '중간 발표 자료 3~5장 작성', status: 'in_progress', progress: 40, siren: false, assigneeId: 'u4', dueAt: '2026-11-11T19:00:00+09:00', createdBy: 'u2', createdAt: '2026-11-07T10:00:00+09:00' },
+  { id: 'k3', teamId: 't1', milestoneId: null, title: '프로토타입 플로우 수정', status: 'todo', progress: 0, siren: false, assigneeId: 'u3', dueAt: '2026-11-12T23:59:00+09:00', createdBy: 'u2', createdAt: '2026-11-08T14:00:00+09:00' },
+  { id: 'k4', teamId: 't1', milestoneId: 'm4', title: '발표 대본 작성', status: 'todo', progress: 0, siren: false, assigneeId: 'u4', dueAt: '2026-11-12T23:59:00+09:00', createdBy: 'u2', createdAt: '2026-11-08T14:05:00+09:00' },
+  { id: 'k14', teamId: 't1', milestoneId: 'm1', title: '인터뷰 결과 요약', status: 'in_progress', progress: 70, siren: false, assigneeId: 'u1', dueAt: '2026-11-10T23:59:00+09:00', createdBy: 'u2', createdAt: '2026-11-05T10:00:00+09:00' },
+  { id: 'k16', teamId: 't1', milestoneId: 'm4', title: '발표 스크립트 초안', status: 'in_progress', progress: 10, siren: false, assigneeId: 'u1', dueAt: '2026-11-17T23:59:00+09:00', createdBy: 'u2', createdAt: '2026-11-09T10:00:00+09:00' },
 
   // 캡스톤
-  { id: 'k5', teamId: 't2', milestoneId: null, title: '디자인 토큰 스토리북 정리', status: 'done', progress: 100, priority: null, assigneeId: 'u1', dueAt: '2026-11-07T23:59:00+09:00', createdBy: 'u1', createdAt: '2026-11-01T18:00:00+09:00' },
-  { id: 'k6', teamId: 't2', milestoneId: 'm3', title: '홈 화면 퍼블리싱', status: 'in_progress', progress: 30, priority: null, assigneeId: 'u5', dueAt: '2026-11-14T23:59:00+09:00', createdBy: 'u1', createdAt: '2026-11-04T19:30:00+09:00' },
-  { id: 'k7', teamId: 't2', milestoneId: null, title: '일정 API 설계', status: 'in_progress', progress: 50, priority: null, assigneeId: 'u6', dueAt: '2026-11-15T23:59:00+09:00', createdBy: 'u1', createdAt: '2026-11-04T19:30:00+09:00' },
-  { id: 'k8', teamId: 't2', milestoneId: 'm3', title: '팀 초대 플로우 와이어프레임', status: 'todo', progress: 0, priority: null, assigneeId: 'u5', dueAt: '2026-11-16T23:59:00+09:00', createdBy: 'u1', createdAt: '2026-11-04T19:35:00+09:00' },
-  { id: 'k9', teamId: 't2', milestoneId: null, title: '중간 점검 보고서 초안', status: 'todo', progress: 0, priority: null, assigneeId: 'u2', dueAt: '2026-11-17T23:59:00+09:00', createdBy: 'u1', createdAt: '2026-11-10T09:00:00+09:00' },
-  { id: 'k15', teamId: 't2', milestoneId: 'm3', title: '하이파이 목업 제작하기', status: 'in_progress', progress: 30, priority: 'high', assigneeId: 'u1', dueAt: '2026-11-15T23:59:00+09:00', createdBy: 'u1', createdAt: '2026-11-09T11:00:00+09:00' },
+  { id: 'k5', teamId: 't2', milestoneId: null, title: '디자인 토큰 스토리북 정리', status: 'done', progress: 100, siren: false, assigneeId: 'u1', dueAt: '2026-11-07T23:59:00+09:00', createdBy: 'u1', createdAt: '2026-11-01T18:00:00+09:00' },
+  { id: 'k6', teamId: 't2', milestoneId: 'm3', title: '홈 화면 퍼블리싱', status: 'in_progress', progress: 30, siren: false, assigneeId: 'u5', dueAt: '2026-11-14T23:59:00+09:00', createdBy: 'u1', createdAt: '2026-11-04T19:30:00+09:00' },
+  { id: 'k7', teamId: 't2', milestoneId: null, title: '일정 API 설계', status: 'in_progress', progress: 50, siren: false, assigneeId: 'u6', dueAt: '2026-11-15T23:59:00+09:00', createdBy: 'u1', createdAt: '2026-11-04T19:30:00+09:00' },
+  { id: 'k8', teamId: 't2', milestoneId: 'm3', title: '팀 초대 플로우 와이어프레임', status: 'todo', progress: 0, siren: false, assigneeId: 'u5', dueAt: '2026-11-16T23:59:00+09:00', createdBy: 'u1', createdAt: '2026-11-04T19:35:00+09:00' },
+  { id: 'k9', teamId: 't2', milestoneId: null, title: '중간 점검 보고서 초안', status: 'todo', progress: 0, siren: false, assigneeId: 'u2', dueAt: '2026-11-17T23:59:00+09:00', createdBy: 'u1', createdAt: '2026-11-10T09:00:00+09:00' },
+  { id: 'k15', teamId: 't2', milestoneId: 'm3', title: '하이파이 목업 제작하기', status: 'in_progress', progress: 30, siren: true, assigneeId: 'u1', dueAt: '2026-11-15T23:59:00+09:00', createdBy: 'u1', createdAt: '2026-11-09T11:00:00+09:00' },
 
   // 졸준위
-  { id: 'k10', teamId: 't3', milestoneId: 'm2', title: '전시 포스터 시안 공유하기', status: 'todo', progress: 0, priority: null, assigneeId: 'u1', dueAt: '2026-11-12T22:00:00+09:00', createdBy: 'u7', createdAt: '2026-11-09T23:40:00+09:00' },
-  { id: 'k11', teamId: 't3', milestoneId: null, title: '전시장 대관 견적 받기', status: 'in_progress', progress: 50, priority: null, assigneeId: 'u8', dueAt: '2026-11-14T18:00:00+09:00', createdBy: 'u7', createdAt: '2026-11-09T23:45:00+09:00' },
-  { id: 'k12', teamId: 't3', milestoneId: null, title: '참여 학생 명단 확정', status: 'done', progress: 100, priority: null, assigneeId: 'u3', dueAt: '2026-11-08T23:59:00+09:00', createdBy: 'u7', createdAt: '2026-11-02T20:00:00+09:00' },
+  { id: 'k10', teamId: 't3', milestoneId: 'm2', title: '전시 포스터 시안 공유하기', status: 'todo', progress: 0, siren: false, assigneeId: 'u1', dueAt: '2026-11-12T22:00:00+09:00', createdBy: 'u7', createdAt: '2026-11-09T23:40:00+09:00' },
+  { id: 'k11', teamId: 't3', milestoneId: null, title: '전시장 대관 견적 받기', status: 'in_progress', progress: 50, siren: false, assigneeId: 'u8', dueAt: '2026-11-14T18:00:00+09:00', createdBy: 'u7', createdAt: '2026-11-09T23:45:00+09:00' },
+  { id: 'k12', teamId: 't3', milestoneId: null, title: '참여 학생 명단 확정', status: 'done', progress: 100, siren: false, assigneeId: 'u3', dueAt: '2026-11-08T23:59:00+09:00', createdBy: 'u7', createdAt: '2026-11-02T20:00:00+09:00' },
 
   // 개인 태스크
-  { id: 'k13', teamId: null, milestoneId: null, title: '토익 모의고사 1회분 풀기', status: 'todo', progress: 0, priority: null, assigneeId: 'u1', dueAt: '2026-11-15T23:59:00+09:00', createdBy: 'u1', createdAt: '2026-11-08T22:00:00+09:00' },
+  { id: 'k13', teamId: null, milestoneId: null, title: '토익 모의고사 1회분 풀기', status: 'todo', progress: 0, siren: false, assigneeId: 'u1', dueAt: '2026-11-15T23:59:00+09:00', createdBy: 'u1', createdAt: '2026-11-08T22:00:00+09:00' },
 ];
 
 // ── 알림 ──────────────────────────────────────────────

@@ -6,7 +6,7 @@ import {
   getMyTasks,
   getMyUnreadRequests,
 } from '../../mocks/queries';
-import type { Milestone, Notification, Task, TaskPriority } from '../../mocks/types';
+import type { Milestone, Notification, Task } from '../../mocks/types';
 
 const DAY_MS = 86_400_000;
 const KST_OFFSET_MS = 9 * 3_600_000;
@@ -42,18 +42,13 @@ export const formatRelativeTime = (iso: string, now: string = MOCK_NOW): string 
   return `${formatMonthDay(iso)} ${time}`;
 };
 
-/** 마감일로 정하는 우선순위 (PriorityMenu의 자동 산정 기준과 같음) */
-export const autoPriority = (days: number): TaskPriority =>
-  days <= 1 ? 'highest' : days <= 3 ? 'high' : days <= 7 ? 'medium' : 'low';
+/** 중요한 태스크 패널에 보여줄 최대 개수 */
+export const IMPORTANT_LIMIT = 4;
 
 export type TaskItem = Task & {
   /** 마감까지 남은 날 수 (daysUntil) */
   days: number;
-  /** 직접 고른 값이 있으면 그것, 없으면 자동 산정 */
-  effectivePriority: TaskPriority;
   milestone: Milestone | undefined;
-  /** 안 읽은 찌르기가 있는 태스크 (사이렌 표시) */
-  nudged: boolean;
 };
 
 export type MyTasksOverview = {
@@ -65,7 +60,7 @@ export type MyTasksOverview = {
   dueLaterThisWeek: TaskItem[];
   /** 진행 중인 태스크 수 */
   inProgressCount: number;
-  /** 우선순위 최상·높음, 마감 빠른 순 */
+  /** 사이렌 켠 것 먼저, 그다음 마감 빠른 순으로 최대 IMPORTANT_LIMIT개 */
   important: TaskItem[];
   /** 안 읽은 요청, 최신순 */
   unreadRequests: Notification[];
@@ -78,24 +73,14 @@ export type MyTasksOverview = {
  * '이번 주'는 일요일 ~ 토요일이에요.
  */
 export function getMyTasksOverview(now: string = MOCK_NOW): MyTasksOverview {
-  const unreadRequests = getMyUnreadRequests();
-  const nudgedTaskIds = new Set(
-    unreadRequests.filter((n) => n.type === 'nudge' && n.taskId).map((n) => n.taskId),
-  );
-
   // 마감일이 있는 미완료 태스크만 날짜 계산 대상 (getMyTasks가 마감 빠른 순으로 줘요)
   const open: TaskItem[] = getMyTasks()
     .filter((t): t is Task & { dueAt: string } => t.status !== 'done' && t.dueAt !== null)
-    .map((t) => {
-      const days = daysUntil(t.dueAt, now);
-      return {
-        ...t,
-        days,
-        effectivePriority: t.priority ?? autoPriority(days),
-        milestone: t.milestoneId ? getMilestone(t.milestoneId) : undefined,
-        nudged: nudgedTaskIds.has(t.id),
-      };
-    });
+    .map((t) => ({
+      ...t,
+      days: daysUntil(t.dueAt, now),
+      milestone: t.milestoneId ? getMilestone(t.milestoneId) : undefined,
+    }));
 
   const today = kstDay(now);
   const weekday = (today + 4) % 7; // 1970-01-01은 목요일 → 일요일 = 0
@@ -106,8 +91,9 @@ export function getMyTasksOverview(now: string = MOCK_NOW): MyTasksOverview {
     dueToday: open.filter((t) => t.days === 0),
     dueLaterThisWeek: open.filter((t) => t.days > 0 && t.days <= daysToSaturday),
     inProgressCount: getMyTasks().filter((t) => t.status === 'in_progress').length,
-    important: open.filter((t) => t.effectivePriority === 'highest' || t.effectivePriority === 'high'),
-    unreadRequests,
+    // sort는 안정 정렬이라 사이렌끼리·나머지끼리는 마감 순이 유지돼요
+    important: [...open].sort((a, b) => Number(b.siren) - Number(a.siren)).slice(0, IMPORTANT_LIMIT),
+    unreadRequests: getMyUnreadRequests(),
     activeMilestones: getMyActiveMilestones(),
   };
 }

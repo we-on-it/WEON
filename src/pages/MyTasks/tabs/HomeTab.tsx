@@ -113,15 +113,13 @@ function ImportantList({ tasks, onTaskSelect }: { tasks: TaskItem[]; onTaskSelec
       {tasks.map((t) => (
         <li key={t.id}>
           <Row className={styles.taskRow} onClick={onTaskSelect && (() => onTaskSelect(t.id))}>
-            {/* 우선순위 최상(마감 지남·D-1 이내)은 빨강 */}
-            <span
-              className={[styles.dDay, styles.dDayFixed, t.effectivePriority === 'highest' ? styles.critical : styles.muted].join(' ')}
-            >
+            {/* 마감 지남·D-1 이내는 빨강 */}
+            <span className={[styles.dDay, styles.dDayFixed, t.days <= 1 ? styles.critical : styles.muted].join(' ')}>
               {formatDDay(t.days)}
             </span>
             <TeamBadge teamId={t.teamId} />
             <span className={styles.taskTitleRow}>
-              {t.nudged && <Icon name="siren" size={16} className={styles.siren} title="찌르기 받음" />}
+              {t.siren && <Icon name="siren" size={16} className={styles.siren} title="사이렌" />}
               <span className={styles.taskTitle}>{t.title}</span>
             </span>
           </Row>

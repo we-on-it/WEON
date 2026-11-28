@@ -13,6 +13,34 @@
           ]
         }
       }
+    },
+    "fill": {
+      "ai-gradient": {
+        "$type": "gradient",
+        "$description": "Figma Badge type=ai 배경. 그라디언트라 background(-image)로만 사용",
+        "$value": {
+          "angle": 90,
+          "stops": [
+            { "color": "{palette.neon-tint}", "position": 0 },
+            { "color": "#E6FFF3", "position": 0.5 },
+            { "color": "{palette.blue-100}", "position": 1 }
+          ]
+        }
+      }
+    },
+    "foreground": {
+      "ai-gradient": {
+        "$type": "gradient",
+        "$description": "Figma Badge type=ai 글자. background-clip: text와 함께 사용",
+        "$value": {
+          "angle": 90,
+          "stops": [
+            { "color": "#448400", "position": 0 },
+            { "color": "#00A270", "position": 0.5 },
+            { "color": "{palette.blue-700}", "position": 1 }
+          ]
+        }
+      }
     }
   },
   "effect": {

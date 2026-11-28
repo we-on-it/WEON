@@ -149,6 +149,7 @@
   --foreground-warning: var(--palette-yellow-600);
   --foreground-critical: var(--palette-red-600);
   --foreground-success: var(--palette-green-600);
+  --foreground-ai-gradient: linear-gradient(90deg, #448400 0%, #00A270 50%, var(--palette-blue-700) 100%);
 
   /* semantic/fill */
   --fill-neutral: var(--palette-gray-900);
@@ -187,6 +188,7 @@
   --fill-transparent: var(--palette-black-alpha-0);
   --fill-transparent-hover: var(--palette-black-alpha-100);
   --fill-transparent-pressed: var(--palette-black-alpha-200);
+  --fill-ai-gradient: linear-gradient(90deg, var(--palette-neon-tint) 0%, #E6FFF3 50%, var(--palette-blue-100) 100%);
 
   /* semantic/border */
   --border-default: var(--palette-gray-1000);

@@ -1,0 +1,26 @@
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-4);
+  min-height: 320px;
+  border-radius: 24px; /* HomeTab 패널과 같은 모서리 */
+  background: var(--background-floated);
+}
+
+.title {
+  margin: 0;
+  color: var(--foreground-primary);
+  font-size: var(--font-size-heading4);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+}
+
+.description {
+  margin: 0;
+  color: var(--foreground-tertiary);
+  font-size: var(--font-size-body2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+}

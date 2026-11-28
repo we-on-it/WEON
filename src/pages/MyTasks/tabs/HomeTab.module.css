@@ -1,0 +1,312 @@
+/* Figma: 나의 태스크 > 01 홈 (node 454:18251)
+ * 시안의 palette 색은 가장 가까운 semantic 토큰으로 바꿔 씀 (README 컬러 규칙) */
+
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-24);
+}
+
+/* ── summary: 같은 폭 카드 5개 · gap 12 ─────────────────── */
+.summary {
+  display: flex;
+  gap: var(--gap-12);
+  margin: 0;
+}
+
+.stat {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-2);
+  padding: var(--padding-16) var(--padding-20);
+  border-radius: var(--round-16);
+  background: var(--background-floated);
+}
+
+/* Caption1/Medium */
+.statLabel {
+  color: var(--foreground-tertiary);
+  font-size: var(--font-size-caption1);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+  white-space: nowrap;
+}
+
+/* Heading3 */
+.statValue {
+  margin: 0;
+  color: var(--foreground-primary);
+  font-size: var(--font-size-heading3);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+}
+
+/* ── grid: 2열 같은 폭 · gap 16 ─────────────────────────── */
+.grid {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gap-16);
+}
+
+.column {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-16);
+}
+
+/* ── panel: padding 24 · radius 24 · gap 16 ─────────────── */
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-16);
+  padding: var(--padding-24);
+  border-radius: 24px; /* 숫자 토큰 없음 */
+  background: var(--background-floated);
+}
+
+/* Heading4 */
+.panelHead {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-8);
+  margin: 0;
+  color: var(--foreground-primary);
+  font-size: var(--font-size-heading4);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+}
+
+/* Body2/SemiBold */
+.panelCount {
+  color: var(--foreground-critical);
+  font-size: var(--font-size-body2);
+  line-height: var(--line-height-text);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.empty {
+  margin: 0;
+  color: var(--foreground-tertiary);
+  font-size: var(--font-size-body2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+}
+
+/* 줄 공통: 누를 수 있으면 hover 배경. 배경이 글자에 붙지 않게 좌우로 8px 넓힘 */
+.clickable {
+  width: calc(100% + 16px);
+  margin: 0 -8px;
+  padding-left: var(--padding-8);
+  padding-right: var(--padding-8);
+  border: none;
+  border-radius: var(--round-12);
+  background: var(--fill-transparent);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+.clickable:hover {
+  background: var(--fill-transparent-hover);
+}
+.clickable:active {
+  background: var(--fill-transparent-pressed);
+}
+.clickable:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: -2px;
+}
+
+.critical {
+  color: var(--foreground-critical);
+}
+.brand {
+  color: var(--foreground-brand);
+}
+.muted {
+  color: var(--foreground-tertiary);
+}
+
+/* ── 태스크 줄: gap 10 · padding 10/0 ───────────────────── */
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-8);
+}
+
+/* Caption1/SemiBold */
+.groupLabel {
+  margin: 0;
+  color: var(--foreground-secondary);
+  font-size: var(--font-size-caption1);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-text);
+}
+.groupLabel.critical {
+  color: var(--foreground-critical);
+}
+
+.taskRow {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--gap-10);
+  width: 100%;
+  padding-top: var(--padding-10);
+  padding-bottom: var(--padding-10);
+}
+
+/* Body2/Medium */
+.dDay {
+  flex-shrink: 0;
+  color: var(--foreground-primary);
+  font-size: var(--font-size-body2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+  white-space: nowrap;
+}
+.dDay.critical {
+  color: var(--foreground-critical);
+}
+.dDay.muted {
+  color: var(--foreground-tertiary);
+}
+.dDayFixed {
+  min-width: 30px; /* 중요한 태스크: D-day 칸 고정 */
+}
+
+.taskText {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-2);
+}
+
+.taskTitleRow {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--gap-4);
+}
+
+/* Body1/Medium */
+.taskTitle {
+  overflow: hidden;
+  color: var(--foreground-primary);
+  font-size: var(--font-size-body1);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Caption2/Medium */
+.taskMeta {
+  overflow: hidden;
+  color: var(--foreground-tertiary);
+  font-size: var(--font-size-caption2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.siren {
+  flex-shrink: 0;
+  color: var(--foreground-critical);
+}
+
+/* ── 요청 줄: 세로 gap 4 · padding 8/0 ──────────────────── */
+.requestRow {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-4);
+  width: 100%;
+  padding-top: var(--padding-8);
+  padding-bottom: var(--padding-8);
+}
+
+/* Body2/Medium. 좁은 폭에서는 줄바꿈 */
+.requestMessage {
+  color: var(--foreground-primary);
+  font-size: var(--font-size-body2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+}
+
+/* Caption2/Medium */
+.requestTime {
+  color: var(--foreground-tertiary);
+  font-size: var(--font-size-caption2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+}
+
+/* ── 마일스톤 줄: 세로 gap 8 · padding 8/0 ──────────────── */
+.milestone {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-8);
+  padding: var(--padding-8) 0;
+}
+
+.milestoneHead {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-8);
+}
+
+/* Caption1/Medium. spacer 대신 auto margin으로 오른쪽 정렬 */
+.milestonePeriod {
+  margin-left: auto;
+  color: var(--foreground-secondary);
+  font-size: var(--font-size-caption1);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+  white-space: nowrap;
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-10);
+}
+
+/* 높이 6 · radius 3 */
+.progress {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--fill-neutral-weak);
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--fill-brand);
+}
+
+/* Caption2/Medium */
+.progressValue {
+  flex-shrink: 0;
+  color: var(--foreground-tertiary);
+  font-size: var(--font-size-caption2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+}

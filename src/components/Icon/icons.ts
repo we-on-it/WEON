@@ -55,6 +55,7 @@ export const ICON_NAMES = [
   'search',
   'send',
   'settings',
+  'siren',
   'sync',
   'task',
   'template',

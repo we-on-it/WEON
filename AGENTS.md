@@ -17,3 +17,4 @@ Claude Code·Codex 등 모든 AI 에이전트가 지킨다. (Claude Code는 `CLA
   - push는 실행 전에 승인 창이 뜬다 (Claude는 `.claude/settings.json`, Codex는 `.codex/rules/`).
   - `gh`가 없거나 로그인되어 있지 않으면 push까지만 하고, GitHub에서 PR을 열 수 있는 링크를 알려준다.
 - merge는 하지 않는다. 사용자가 리뷰 후 직접 한다. (merge된 브랜치는 GitHub에서 자동 삭제됨)
+- 화면·컴포넌트를 만들 때는 README "화면 폭" 섹션을 따른다. 디자인 기준은 1502px, 최소 지원 폭은 1280px이고, 시안에 없는 모바일·태블릿 레이아웃이나 브레이크포인트는 임의로 만들지 않는다.

@@ -1,0 +1,35 @@
+/* 자동 생성 파일 — 직접 수정하지 마세요.
+ * 원본: src/styles/tokens/*.tokens.json (Figma 변수 export + 스타일 수동 정리)
+ * 생성: npm run tokens
+ */
+:root {
+  /* number/gap */
+  --gap-2: 2px;
+  --gap-4: 4px;
+  --gap-6: 6px;
+  --gap-8: 8px;
+  --gap-10: 10px;
+  --gap-12: 12px;
+  --gap-16: 16px;
+  --gap-24: 24px;
+  --gap-40: 40px;
+
+  /* number/round */
+  --round-4: 4px;
+  --round-10: 10px;
+  --round-16: 16px;
+  --round-32: 32px;
+  --round-pill: 999px;
+
+  /* number/padding */
+  --padding-4: 4px;
+  --padding-6: 6px;
+  --padding-8: 8px;
+  --padding-10: 10px;
+  --padding-12: 12px;
+  --padding-14: 14px;
+  --padding-16: 16px;
+  --padding-20: 20px;
+  --padding-24: 24px;
+  --padding-28: 28px;
+}

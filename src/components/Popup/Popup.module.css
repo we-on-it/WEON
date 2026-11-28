@@ -1,0 +1,101 @@
+/* Figma: Components / Popup (node 596:34046) */
+
+/* 팝업 뒤에 항상 깔리는 dim. 팝업을 가운데 정렬하는 역할도 합니다 */
+.dim {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-24);
+  background: var(--background-dim);
+}
+
+.popup {
+  --popup-px: 32px;
+  --popup-action-height: 106px; /* 액션 영역(버튼 40 + 위아래 패딩 32×2 + 여유)만큼 콘텐츠 아래를 비웁니다 */
+
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 920px;
+  max-width: 100%;
+  /* 720 밑으로는 안 줄어들되, 창이 그보다 좁으면(768px 미만) 화면 폭에 맞춥니다 */
+  min-width: min(720px, 100%);
+  min-height: min(400px, 100%);
+  max-height: min(960px, 100%);
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--background-floated);
+  box-shadow: var(--shadow-weak);
+  color: var(--foreground-primary);
+}
+.popup:focus {
+  outline: none;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-8);
+  flex-shrink: 0;
+  padding: 32px var(--popup-px) 0;
+}
+
+.title {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-text);
+  color: var(--foreground-primary);
+  word-break: break-word;
+}
+
+.close {
+  display: inline-flex;
+  flex-shrink: 0;
+  margin: 0 0 0 auto;
+  padding: 0;
+  border: none;
+  border-radius: var(--round-4);
+  background: none;
+  color: var(--foreground-primary);
+  cursor: pointer;
+}
+.close:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* 내용이 길면 이 영역만 스크롤됩니다 */
+.content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 32px var(--popup-px);
+}
+.hasActions .content {
+  padding-bottom: var(--popup-action-height);
+}
+
+/* 스크롤되는 콘텐츠 위에 흰색 그라디언트로 겹쳐 떠 있습니다 */
+.actions {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--gap-8);
+  padding: 32px;
+  background: linear-gradient(180deg, transparent 0%, var(--background-floated) 31.733%);
+  pointer-events: none;
+}
+.actions > * {
+  pointer-events: auto;
+}

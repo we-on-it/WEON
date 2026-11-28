@@ -1,0 +1,16 @@
+/* Figma: MilestoneChip (node 461:11422)
+ * Hug · gap 4 · padding 2/6 · radius 6 · Caption2/Medium (12px) */
+.chip {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-4);
+  padding: 2px var(--padding-6); /* 2: 숫자 토큰 없음 */
+  border-radius: 6px; /* 숫자 토큰 없음 */
+  background: var(--background-floated-subtle);
+  color: var(--foreground-secondary);
+  font-size: var(--font-size-caption2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+  white-space: nowrap;
+}

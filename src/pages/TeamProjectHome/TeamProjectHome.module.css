@@ -10,6 +10,9 @@
   color: var(--foreground-primary);
   font: var(--font-weight-medium) var(--font-size-body1)/var(--line-height-text) var(--font-sans);
 }
+.page[data-home='true'] {
+  background: linear-gradient(180deg, var(--background-floated-subtle) 59.615%, var(--fill-brand-weak) 99.519%);
+}
 .page :where(h1,h2,h3,h4,p,ol,ul) { margin: 0; }
 .page :where(button, a):focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; }
 .rail { display: flex; }
@@ -57,7 +60,7 @@
 .settingsGrid[hidden] { display: none; }
 .settingsGrid article { min-width: 0; padding: 18px var(--padding-24) var(--padding-24); border-radius: 22px; }
 .sectionLink, .row, .templates a, .boardHeader { display: flex; align-items: center; justify-content: space-between; gap: var(--gap-8); }
-.sectionLink { width: 100%; font-size: var(--font-size-title); font-weight: var(--font-weight-semibold); margin-bottom: 14px; }
+.sectionLink { width: 100%; font-size: var(--font-size-title); font-weight: 700; margin-bottom: 14px; }
 .rules, .templates { display: grid; gap: var(--gap-8); padding: 0; list-style: none; }
 .rules li, .templates a { display: flex; align-items: center; min-height: 28px; }
 .rules li { gap: var(--gap-6); }
@@ -74,7 +77,7 @@
 .milestone li[aria-current]::before { background: var(--fill-brand); }
 .board { border-radius: var(--round-32); padding: var(--padding-28) var(--padding-24); min-width: 0; }
 .boardHeader { height: 39px; margin-bottom: var(--gap-24); }
-.boardTitle { gap: var(--gap-6); font-size: var(--font-size-heading3); line-height: var(--line-height-heading); }
+.boardTitle { gap: var(--gap-6); font-size: 26px; font-weight: 700; line-height: var(--line-height-text); }
 .boardActions { gap: var(--gap-12); }
 .toggle { gap: var(--gap-2); background: var(--fill-neutral-weak); border-radius: var(--round-pill); padding: 3px; }
 .toggle button { display: grid; place-items: center; padding: var(--padding-6) var(--padding-12); border-radius: var(--round-pill); color: var(--foreground-tertiary); }
@@ -92,6 +95,7 @@
   font-size: var(--font-size-body2);
   line-height: round(up, calc(1em * var(--line-height-text)), 1px);
 }
+.siren, .task [data-due-today='true'] { color: var(--foreground-critical); }
 .task strong { font-weight: var(--font-weight-semibold); }
 .progressRow { display: flex; gap: var(--gap-4); align-items: center; color: var(--foreground-secondary); }
 .progressRow, .taskFooter {

@@ -42,17 +42,17 @@
   --palette-red-900: #860303;
   --palette-red-1000: #460101;
 
-  /* palette/pink */
-  --palette-pink-100: #FFE8EF;
-  --palette-pink-200: #FDD0DD;
-  --palette-pink-300: #FCB1C6;
-  --palette-pink-400: #F994B1;
-  --palette-pink-500: #FB6F97;
-  --palette-pink-600: #F8497B;
-  --palette-pink-700: #DF2056;
-  --palette-pink-800: #B80A3B;
-  --palette-pink-900: #810427;
-  --palette-pink-1000: #450215;
+  /* palette/orange */
+  --palette-orange-100: #FFECDC;
+  --palette-orange-200: #FED5B6;
+  --palette-orange-300: #FEBD8D;
+  --palette-orange-400: #FD9D5D;
+  --palette-orange-500: #FF750B;
+  --palette-orange-600: #E76311;
+  --palette-orange-700: #C8500D;
+  --palette-orange-800: #A23D08;
+  --palette-orange-900: #742804;
+  --palette-orange-1000: #3A0F01;
 
   /* palette/yellow */
   --palette-yellow-100: #FCF0CE;
@@ -78,6 +78,18 @@
   --palette-green-900: #094E31;
   --palette-green-1000: #062315;
 
+  /* palette/teal */
+  --palette-teal-100: #DDF6F4;
+  --palette-teal-200: #ABEDEA;
+  --palette-teal-300: #79E0DE;
+  --palette-teal-400: #0ED1D1;
+  --palette-teal-500: #0BBABA;
+  --palette-teal-600: #09A6A6;
+  --palette-teal-700: #068D8E;
+  --palette-teal-800: #046F72;
+  --palette-teal-900: #024D50;
+  --palette-teal-1000: #002526;
+
   /* palette/blue */
   --palette-blue-100: #E1F3FF;
   --palette-blue-200: #BDE4FE;
@@ -102,6 +114,18 @@
   --palette-purple-900: #492B86;
   --palette-purple-1000: #23104A;
 
+  /* palette/pink */
+  --palette-pink-100: #FDE8F3;
+  --palette-pink-200: #F9D1E6;
+  --palette-pink-300: #F5B2D7;
+  --palette-pink-400: #F096CA;
+  --palette-pink-500: #EE72BE;
+  --palette-pink-600: #E850B1;
+  --palette-pink-700: #CE2D99;
+  --palette-pink-800: #A91B7C;
+  --palette-pink-900: #760F56;
+  --palette-pink-1000: #3F052C;
+
   /* palette/neon */
   --palette-neon-tint: #F2FAD8;
   --palette-neon-light: #E8FF94;
@@ -125,12 +149,11 @@
   --foreground-warning: var(--palette-yellow-600);
   --foreground-critical: var(--palette-red-600);
   --foreground-success: var(--palette-green-600);
-  --foreground-ai: var(--palette-purple-600);
 
   /* semantic/fill */
   --fill-neutral: var(--palette-gray-900);
   --fill-neutral-hover: var(--palette-gray-1000);
-  --fill-neutral-pressed: #000000;
+  --fill-neutral-pressed: var(--palette-black-alpha-1000);
   --fill-neutral-weak: var(--palette-gray-100);
   --fill-neutral-weak-hover: var(--palette-gray-200);
   --fill-neutral-weak-pressed: var(--palette-gray-300);
@@ -161,12 +184,6 @@
   --fill-success-weak: var(--palette-green-100);
   --fill-success-weak-hover: var(--palette-green-200);
   --fill-success-weak-pressed: var(--palette-green-300);
-  --fill-ai: var(--palette-purple-600);
-  --fill-ai-hover: var(--palette-purple-700);
-  --fill-ai-pressed: var(--palette-purple-800);
-  --fill-ai-weak: var(--palette-purple-100);
-  --fill-ai-weak-hover: var(--palette-purple-200);
-  --fill-ai-weak-pressed: var(--palette-purple-300);
   --fill-transparent: var(--palette-black-alpha-0);
   --fill-transparent-hover: var(--palette-black-alpha-100);
   --fill-transparent-pressed: var(--palette-black-alpha-200);
@@ -175,6 +192,25 @@
   --border-default: var(--palette-gray-1000);
   --border-weak: var(--palette-gray-200);
   --border-focus: var(--palette-blue-600);
+  --border-critical: var(--palette-red-600);
+
+  /* accent/background */
+  --accent-background-orange: var(--palette-orange-100);
+  --accent-background-teal: var(--palette-teal-100);
+  --accent-background-purple: var(--palette-purple-100);
+  --accent-background-pink: var(--palette-pink-100);
+
+  /* accent/foreground */
+  --accent-foreground-pink: var(--palette-pink-600);
+  --accent-foreground-orange: var(--palette-orange-600);
+  --accent-foreground-teal: var(--palette-teal-600);
+  --accent-foreground-purple: var(--palette-purple-600);
+
+  /* accent/border */
+  --accent-border-pink: var(--palette-pink-600);
+  --accent-border-orange: var(--palette-orange-600);
+  --accent-border-teal: var(--palette-teal-600);
+  --accent-border-purple: var(--palette-purple-600);
 
   /* effect/shadow */
   --shadow-weak: 0 12px 40px 0 var(--palette-black-alpha-300);

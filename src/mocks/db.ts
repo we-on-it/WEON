@@ -41,7 +41,7 @@ export const teams: Team[] = [
     id: 't2',
     name: '캡스톤',
     description: '캡스톤 디자인 — WEON 서비스 개발',
-    color: 'var(--fill-ai)',
+    color: 'var(--accent-foreground-purple)',
     createdAt: '2026-09-01T11:00:00+09:00',
   },
   {

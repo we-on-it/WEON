@@ -1,5 +1,7 @@
 /* 컬러·그라디언트·그림자 토큰 (Figma 토큰 JSON에서 자동 생성, npm run tokens) */
 @import './colors.css';
+/* 간격·모서리 토큰 (Figma 숫자 변수에서 자동 생성, npm run tokens) */
+@import './numbers.css';
 
 /* index.html의 전역 폰트 설정과 동일하게 유지 */
 :root {

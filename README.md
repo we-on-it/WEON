@@ -63,7 +63,7 @@ npm run build-storybook  # storybook-static/ 로 정적 빌드
 .button:hover { background: var(--fill-brand-hover); }
 ```
 
-- 화면 작업에는 **semantic 변수**(`--background-*`, `--foreground-*`, `--fill-*`, `--border-*`)를 쓰고, `--palette-*`는 직접 쓰지 않기
+- 화면 작업에는 **semantic 변수**(`--background-*`, `--foreground-*`, `--fill-*`, `--border-*`)와 강조용 `--accent-*`를 쓰고, `--palette-*`는 직접 쓰지 않기
 - 목록은 스토리북 `Foundations/Color`에서 확인, 클릭하면 `var(...)` 복사
 ### 그라디언트 · 그림자
 
@@ -74,17 +74,27 @@ npm run build-storybook  # storybook-static/ 로 정적 빌드
 
 - 그림자 목록은 스토리북 `Foundations/Shadow`에서 확인
 
+## 간격 · 모서리
+
+```css
+.card { display: flex; gap: var(--gap-8); padding: var(--padding-16); border-radius: var(--round-16); }
+.chip { border-radius: var(--round-pill); }
+```
+
+- `--gap-*`, `--padding-*`, `--round-*` (숫자 = px). 목록은 `src/styles/numbers.css`
+
 ### 토큰 갱신
 
-`src/styles/colors.css`는 아래 두 JSON에서 자동 생성되는 파일이라 직접 수정하지 않습니다.
+`src/styles/colors.css`, `src/styles/numbers.css`는 아래 JSON에서 자동 생성되는 파일이라 직접 수정하지 않습니다.
 
 | 파일 | 내용 | 갱신 방법 |
 |---|---|---|
 | `src/styles/tokens/figma-variables.tokens.json` | 팔레트·semantic 색 (Figma 변수) | Figma에서 변수 export → 파일 교체 |
 | `src/styles/tokens/figma-styles.tokens.json` | 그라디언트·그림자 (Figma 스타일) | 스타일은 export되지 않아 값을 직접 수정 |
+| `src/styles/tokens/figma-numbers.tokens.json` | 간격·모서리 (Figma 숫자 변수) | Figma에서 변수 export → 파일 교체 |
 
 ```bash
-npm run tokens   # 두 JSON → colors.css 재생성
+npm run tokens   # JSON → colors.css, numbers.css 재생성
 ```
 
 ## 아이콘

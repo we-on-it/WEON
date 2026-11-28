@@ -79,7 +79,7 @@ export function FieldHeader({ label, htmlFor, indicator, badge, action }: FieldH
       </label>
       {indicator && <Indicator type={indicator} />}
       {badge && (
-        <Badge type="ai" size="medium" className={styles.badge}>
+        <Badge type="ai" size="medium">
           {badge}
         </Badge>
       )}

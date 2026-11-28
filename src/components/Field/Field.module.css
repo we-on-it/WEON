@@ -17,11 +17,6 @@
   line-height: var(--line-height-text);
 }
 
-/* Figma에서 필드 안의 Badge는 모서리 10px (Badge 기본 square는 4px) */
-.header .badge {
-  border-radius: var(--round-10);
-}
-
 /* spacer 역할: action 버튼을 오른쪽 끝으로 밀어냅니다 */
 .action {
   flex-shrink: 0;

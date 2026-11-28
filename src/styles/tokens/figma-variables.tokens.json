@@ -632,6 +632,94 @@
             "SHAPE_FILL"
           ]
         }
+      },
+      "orange-hover": {
+        "$type": "color",
+        "$value": "{palette.orange.200}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:893:26506",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ]
+        }
+      },
+      "teal-hover": {
+        "$type": "color",
+        "$value": "{palette.teal.200}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:893:26507",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ]
+        }
+      },
+      "purple-hover": {
+        "$type": "color",
+        "$value": "{palette.purple.200}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:893:26508",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ]
+        }
+      },
+      "pink-hover": {
+        "$type": "color",
+        "$value": "{palette.pink.200}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:893:26509",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ]
+        }
+      },
+      "orange-press": {
+        "$type": "color",
+        "$value": "{palette.orange.200}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:893:26510",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ]
+        }
+      },
+      "teal-press": {
+        "$type": "color",
+        "$value": "{palette.teal.200}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:893:26511",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ]
+        }
+      },
+      "purple-press": {
+        "$type": "color",
+        "$value": "{palette.purple.200}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:893:26512",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ]
+        }
+      },
+      "pink-press": {
+        "$type": "color",
+        "$value": "{palette.pink.200}",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:893:26513",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ]
+        }
       }
     },
     "foreground": {

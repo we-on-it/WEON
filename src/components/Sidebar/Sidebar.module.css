@@ -1,0 +1,206 @@
+/* Figma: Components / Sidebar (node 596:26360), Sidebar/MenuItem (910:1796), Sidebar/ProjectItem (910:1797) */
+
+/* ── Sidebar ───────────────────────────────────────────── */
+.sidebar {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Figma 20 (숫자 토큰 없음) */
+  width: 247px;
+  height: 100%;
+  padding: var(--padding-24);
+  border-radius: var(--round-32);
+  background: var(--background-floated);
+}
+
+.logo {
+  display: flex;
+  width: 70px;
+  height: 61px;
+  padding: 9px 0 0 9px;
+  box-sizing: border-box;
+  color: var(--foreground-primary);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--gap-12);
+  min-height: 0;
+  padding-top: 56px;
+}
+
+.menu,
+.projects {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.menu {
+  gap: var(--gap-12);
+}
+
+.divider {
+  padding: var(--padding-16) 0;
+}
+.divider::before {
+  content: '';
+  display: block;
+  height: 2px;
+  border-radius: var(--round-pill);
+  background: var(--border-weak);
+}
+
+/* ── Profile ───────────────────────────────────────────── */
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-8);
+}
+.user {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-12);
+  min-width: 0;
+}
+.userName {
+  overflow: hidden;
+  color: var(--foreground-primary);
+  font-size: var(--font-size-heading4);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.more {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--round-pill);
+  background: var(--fill-transparent);
+  color: var(--foreground-quaternary);
+  cursor: pointer;
+}
+.more:hover {
+  background: var(--fill-transparent-hover);
+}
+.more:active {
+  background: var(--fill-transparent-pressed);
+}
+
+/* ── Item (MenuItem · ProjectItem 공통) ─────────────────── */
+.item {
+  /* 상태·색별로 아래 변수만 바꿔 끼웁니다 */
+  --item-bg: var(--fill-transparent);
+  --item-bg-hover: var(--fill-transparent-hover);
+  --item-bg-pressed: var(--fill-transparent-pressed);
+  --item-fg: var(--foreground-quaternary);
+
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--gap-12);
+  width: 100%;
+  margin: 0;
+  padding: var(--padding-12) var(--padding-16);
+  border: none;
+  border-radius: var(--round-pill);
+  background: var(--item-bg);
+  color: var(--item-fg);
+  font-family: inherit;
+  font-size: var(--font-size-heading4);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 120ms ease;
+}
+.item:hover {
+  background: var(--item-bg-hover);
+}
+.item:active {
+  background: var(--item-bg-pressed);
+}
+.item:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+.label {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* MenuItem selected: 배경은 그대로, 아이콘·글자만 진하게 */
+.item.selected:not(.project) {
+  --item-fg: var(--foreground-primary);
+}
+
+/* ── ProjectItem ───────────────────────────────────────── */
+.leading {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}
+/* 선택 안 됐을 때도 chevron 자리는 남겨 글자 위치를 맞춥니다 */
+.chevron {
+  visibility: hidden;
+}
+.project.selected .chevron {
+  visibility: visible;
+}
+
+.teal {
+  --project-bg: var(--accent-background-teal);
+  --project-bg-hover: var(--accent-background-teal-hover);
+  --project-bg-pressed: var(--accent-background-teal-press);
+  --project-fg: var(--accent-foreground-teal);
+}
+.orange {
+  --project-bg: var(--accent-background-orange);
+  --project-bg-hover: var(--accent-background-orange-hover);
+  --project-bg-pressed: var(--accent-background-orange-press);
+  --project-fg: var(--accent-foreground-orange);
+}
+.purple {
+  --project-bg: var(--accent-background-purple);
+  --project-bg-hover: var(--accent-background-purple-hover);
+  --project-bg-pressed: var(--accent-background-purple-press);
+  --project-fg: var(--accent-foreground-purple);
+}
+.pink {
+  --project-bg: var(--accent-background-pink);
+  --project-bg-hover: var(--accent-background-pink-hover);
+  --project-bg-pressed: var(--accent-background-pink-press);
+  --project-fg: var(--accent-foreground-pink);
+}
+
+/* 선택 안 됨: 회색 hover·press (MenuItem과 같음). 선택됨: 프로젝트 색 */
+.project.selected {
+  --item-bg: var(--project-bg);
+  --item-bg-hover: var(--project-bg-hover);
+  --item-bg-pressed: var(--project-bg-pressed);
+  --item-fg: var(--project-fg);
+}

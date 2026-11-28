@@ -5,6 +5,7 @@
  * 아이콘 추가 시: 16·24 SVG를 각 폴더에 넣고 아래 목록에 이름을 추가하세요.
  */
 export const ICON_NAMES = [
+  'ai',
   'alert-triangle',
   'align-center',
   'align-left',

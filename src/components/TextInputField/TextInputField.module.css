@@ -1,0 +1,11 @@
+/* Figma: Components / TextInputField */
+
+/* header · TextInput · footer를 세로로 쌓고, 너비는 부모를 따라 채웁니다 */
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--gap-8);
+  width: 100%;
+  min-width: 0;
+}

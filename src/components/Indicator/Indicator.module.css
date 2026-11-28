@@ -1,0 +1,17 @@
+/* Figma: Components / indicator */
+
+.indicator {
+  flex-shrink: 0;
+  font-size: var(--font-size-caption1);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+  white-space: nowrap;
+}
+
+/* ── Type (Figma status) ────────────────────────────── */
+.required {
+  color: var(--foreground-critical);
+}
+.optional {
+  color: var(--foreground-tertiary);
+}

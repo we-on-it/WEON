@@ -1,0 +1,58 @@
+/* Figma: Components / TextAreaField (node 867:17616) */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-8);
+  width: 100%;
+  min-width: 0;
+}
+
+/* header: label · indicator · badge · spacer · button (gap 6) */
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-6);
+  min-width: 0;
+}
+
+/* Body1/SemiBold */
+.label {
+  color: var(--foreground-primary);
+  font-size: var(--font-size-body1);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-text);
+  white-space: nowrap;
+}
+
+.spacer {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* footer: 안내/에러 문구 · 글자 수 (Caption1/Medium, gap 8) */
+.footer {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--gap-8);
+  font-size: var(--font-size-caption1);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text);
+  color: var(--foreground-quaternary);
+}
+
+.message {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+}
+
+.counter {
+  flex: 0 0 auto;
+  margin: 0 0 0 auto;
+  white-space: nowrap;
+}
+
+.critical {
+  color: var(--foreground-critical);
+}

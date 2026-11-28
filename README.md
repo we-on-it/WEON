@@ -112,6 +112,27 @@ npm run tokens   # JSON → colors.css, numbers.css 재생성
 - 모바일·태블릿 레이아웃은 시안이 없으므로 만들지 않음. 미디어 쿼리는 실제로 깨지는 곳에만 추가
 - 600px 높이에서 주요 버튼이 화면 밖으로 밀리지 않는지 확인
 
+## 화면 추가 · 배포
+
+`main`에 merge되면 GitHub Actions(`.github/workflows/pages.yml`)가 빌드해서 [weonit.kr](https://weonit.kr)에 자동 배포합니다.
+
+| 주소 | 내용 |
+|---|---|
+| `/` | 안내 페이지 (루트 `index.html`) |
+| `/my-tasks/`, `/team-project-home/` … | 화면별 페이지 |
+| `/storybook/` | Storybook 정적 빌드 |
+
+새 화면을 weonit.kr에 올리려면:
+
+1. 루트에 `<경로>/index.html` + `<경로>/main.tsx` 진입점을 만든다 (`my-tasks/` 참고)
+2. `vite.config.ts`의 `input`에 `'<경로>/index.html'` 추가
+3. 루트 `index.html` 목록에 링크 추가
+
+```bash
+npm run build                     # dist/ 로 빌드
+npx vite preview                  # http://localhost:4173 에서 배포본 확인
+```
+
 ## 아이콘
 
 ```tsx

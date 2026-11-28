@@ -9,7 +9,7 @@ import { Icon } from '../Icon/Icon';
 import type { IconName } from '../Icon/icons';
 import styles from './DocumentEditor.module.css';
 
-/** 글자색 선택지. 팀 semantic 변수만 씁니다 */
+/** 글자색 선택지. 팀 semantic·accent 변수만 씁니다 */
 export const TEXT_COLORS = [
   { label: '기본', value: null },
   { label: '회색', value: 'var(--foreground-tertiary)' },
@@ -17,7 +17,8 @@ export const TEXT_COLORS = [
   { label: '빨강', value: 'var(--foreground-critical)' },
   { label: '주황', value: 'var(--foreground-warning)' },
   { label: '초록', value: 'var(--foreground-success)' },
-  { label: 'AI', value: 'var(--foreground-ai)' },
+  { label: '보라', value: 'var(--accent-foreground-purple)' },
+  { label: '분홍', value: 'var(--accent-foreground-pink)' },
 ] as const;
 
 /** 형광펜 선택지 */
@@ -27,7 +28,8 @@ export const HIGHLIGHT_COLORS = [
   { label: '빨강', value: 'var(--fill-critical-weak)' },
   { label: '주황', value: 'var(--fill-warning-weak)' },
   { label: '초록', value: 'var(--fill-success-weak)' },
-  { label: 'AI', value: 'var(--fill-ai-weak)' },
+  { label: '보라', value: 'var(--accent-background-purple)' },
+  { label: '분홍', value: 'var(--accent-background-pink)' },
 ] as const;
 
 export type DocumentEditorProps = {

@@ -22,6 +22,8 @@
   flex-direction: column;
   width: 920px;
   max-width: 100%;
+  /* 720 밑으로는 안 줄어들되, 창이 그보다 좁으면(768px 미만) 화면 폭에 맞춥니다 */
+  min-width: min(720px, 100%);
   min-height: min(400px, 100%);
   max-height: min(960px, 100%);
   overflow: hidden;

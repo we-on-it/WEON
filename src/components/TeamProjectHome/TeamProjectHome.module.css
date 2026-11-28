@@ -29,10 +29,9 @@
   padding: var(--padding-4) var(--padding-8);
   background: var(--fill-white);
   box-shadow: 0 6px 20px rgb(22 27 34 / 15%);
-  --font-size-body2: var(--font-size-caption1);
 }
 .projectMenu [role="menuitem"] {
-  min-height: 36px;
+  min-height: 39px;
   padding: var(--padding-8);
   gap: var(--gap-4);
   border-radius: var(--round-10);

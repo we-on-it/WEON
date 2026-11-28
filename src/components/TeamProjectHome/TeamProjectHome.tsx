@@ -116,7 +116,7 @@ export function TeamProjectHome({ projects = defaultProjects, profile = homeUser
       {project ? <main className={styles.main}>
         <header className={styles.header}>
           <div className={styles.heading}><h1 className="typo-heading1">{project.name}</h1>
-            <DropdownMenu width={163} sideOffset={12} className={styles.projectMenu} trigger={
+            <DropdownMenu width={180} sideOffset={12} className={styles.projectMenu} trigger={
               <button type="button" className={styles.iconButton} aria-label={project.name + ' 더보기'}><Icon name="more" /></button>
             }>
               <MenuItem label="초대 링크 생성" leading={<Icon name="link" size={16} />}

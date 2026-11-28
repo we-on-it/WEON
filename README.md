@@ -47,6 +47,9 @@ git push -u origin feat/login-page    # 3. 커밋 후 push
 
 ## 스토리북
 
+팀 프로젝트 홈은 `npm ci` 후 `npm run dev`를 실행하고 `/team-project-home/`에서 확인합니다.
+Storybook의 `Screens/TeamProjectHome`에는 실제 데모 데이터 화면과 Figma 비교용 화면, 목록 보기, 빈 보드가 있습니다.
+
 ```bash
 npm install
 npm run storybook        # http://localhost:6006

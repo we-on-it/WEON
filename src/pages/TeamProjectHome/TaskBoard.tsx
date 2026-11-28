@@ -1,11 +1,11 @@
 import { useId, useState } from 'react';
-import { Badge } from '../Badge/Badge';
-import { Button } from '../Button/Button';
-import { Icon } from '../Icon/Icon';
-import { Popup } from '../Popup/Popup';
-import { TempPriorityIcon } from '../PriorityMenu/PriorityMenu';
-import { STATUS_LABEL, TASK_STATUSES, TempStatusChip } from '../StatusMenu/StatusMenu';
-import { TextInputField } from '../TextInputField/TextInputField';
+import { Badge } from '../../components/Badge/Badge';
+import { Button } from '../../components/Button/Button';
+import { Icon } from '../../components/Icon/Icon';
+import { Popup } from '../../components/Popup/Popup';
+import { TempPriorityIcon } from '../../components/PriorityMenu/PriorityMenu';
+import { STATUS_LABEL, TASK_STATUSES, TempStatusChip } from '../../components/StatusMenu/StatusMenu';
+import { TextInputField } from '../../components/TextInputField/TextInputField';
 import { deadline, type BoardTask } from './projectData';
 import styles from './TeamProjectHome.module.css';
 

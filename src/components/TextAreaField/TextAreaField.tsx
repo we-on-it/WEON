@@ -1,144 +1,105 @@
-import { useId, type ReactNode } from 'react';
-import { Badge } from '../Badge/Badge';
-import { Button } from '../Button/Button';
-import type { IconName } from '../Icon/icons';
-import { Indicator, type IndicatorType } from '../Indicator/Indicator';
+import type { CSSProperties, ReactNode, Ref } from 'react';
+import { FieldFooter, FieldHeader, useFieldA11y, type FieldAction } from '../Field/Field';
+import type { IndicatorType } from '../Indicator/Indicator';
 import { TextArea, type TextAreaProps } from '../TextArea/TextArea';
 import styles from './TextAreaField.module.css';
+
+export type { FieldAction } from '../Field/Field';
 
 export const TEXT_AREA_FIELD_STATUSES = ['default', 'error', 'over-limit'] as const;
 export type TextAreaFieldStatus = (typeof TEXT_AREA_FIELD_STATUSES)[number];
 
-export type TextAreaFieldAction = {
-  label: string;
-  /** 버튼 앞 아이콘 (예: 'ai') */
-  icon?: IconName;
-  onClick: () => void;
-  disabled?: boolean;
-};
-
-export type TextAreaFieldProps = Omit<TextAreaProps, 'invalid'> & {
+export type TextAreaFieldProps = Omit<TextAreaProps, 'invalid' | 'className' | 'style'> & {
+  /** 입력칸(<textarea>)에 연결돼요 */
+  ref?: Ref<HTMLTextAreaElement>;
   /**
-   * Figma `status`. 색이 함께 바뀌는 상태
-   * - default: 안내 문구(회색)
-   * - error: 안내 문구 대신 error(빨강) + TextArea invalid
+   * Figma `status` (기본 default)
+   * - default: description(회색)
+   * - error: description 대신 error(빨강) + TextArea invalid
    * - over-limit: error + 글자 수도 빨강
    */
   status?: TextAreaFieldStatus;
-  /** 필드 제목 (Body1/SemiBold) */
+  /** Figma `label`. 필드 제목이며 입력칸과 연결돼요 */
   label: ReactNode;
-  /** 필수/선택 표시. 없으면 숨김 */
+  /** Figma `indicator`. required("필수", 빨강) · optional("선택", 회색), 생략하면 숨김. required면 입력칸에 aria-required가 붙어요 */
   indicator?: IndicatorType;
-  /**
-   * AI 뱃지(type=ai). true면 "AI 생성", 문자열이면 그 글자로 표시.
-   * AI가 만든 값일 때만 켜고, 사용자가 직접 수정하면 끄세요
-   */
-  badge?: boolean | string;
-  /** 헤더 오른쪽 버튼 (Button neutral-weak · 32). 예: AI로 초안 쓰기 */
-  action?: TextAreaFieldAction;
-  /** status=default일 때 안내 문구 (회색) */
+  /** Figma `badge`. 뱃지 텍스트 (예: "AI 생성" · 사용자가 직접 고치면 숨김), 생략하면 숨김 */
+  badge?: string;
+  /** Figma `action`. 헤더 오른쪽 버튼 { label, onClick, icon }, 생략하면 숨김 (예: AI로 초안 쓰기) */
+  action?: FieldAction;
+  /** Figma `description`. status=default일 때 아래 안내 (회색) */
   description?: ReactNode;
-  /** 안내 문구 표시 여부 (기본 true). 꺼도 글자 수와 error 문구는 보여요 */
+  /** Figma `show-description`. 끄면 안내만 사라지고 글자 수는 남아요. error 문구는 꺼도 보여요 (기본 true) */
   showDescription?: boolean;
-  /** status=error | over-limit일 때 description 자리에 보이는 문구 (빨강) */
+  /** Figma `error`. status=error | over-limit일 때 description 자리에 보이는 문구 (빨강) */
   error?: ReactNode;
-  /** 글자 수 표시. 예: "0 / 300자". 없으면 숨김 */
+  /** Figma `counter`. 글자 수 (예: "0 / 300자"), 생략하면 숨김. over-limit에서만 빨강 */
   counter?: ReactNode;
-  /** 바깥 묶음에 붙는 className (TextArea에는 textAreaClassName) */
+  /** 바깥 래퍼 클래스 */
   className?: string;
-  textAreaClassName?: string;
+  /** 바깥 래퍼 스타일 */
+  style?: CSSProperties;
 };
 
 /**
- * Figma `TextAreaField` 컴포넌트 (node 867:17616).
- * TextArea + 라벨·필수/선택·뱃지·버튼·안내 문구·글자 수.
+ * Figma `TextAreaField` 컴포넌트 (node 867:17616). 라벨 + TextArea + 안내/에러 + 글자 수 한 묶음.
+ * 라벨 줄과 안내·에러 줄은 TextInputField와 같이 쓰는 Field 부품입니다.
+ * 나머지 props(placeholder, value, onChange, disabled 등)는 TextArea로 그대로 전달돼요.
  */
 export function TextAreaField({
+  ref,
   status = 'default',
   label,
   indicator,
-  badge = false,
+  badge,
   action,
   description,
   showDescription = true,
   error,
   counter,
   className,
-  textAreaClassName,
+  style,
   id,
-  'aria-describedby': ariaDescribedBy,
+  'aria-describedby': ariaDescribedByProp,
   ...textAreaProps
 }: TextAreaFieldProps) {
-  const autoId = useId();
-  const inputId = id ?? `${autoId}-input`;
-  const messageId = `${autoId}-message`;
-  const counterId = `${autoId}-counter`;
+  const invalid = status !== 'default';
+  const hasCounter = counter !== undefined && counter !== null && counter !== false && counter !== '';
 
-  const isError = status !== 'default';
-  const message = isError ? error : showDescription ? description : undefined;
-  const hasMessage = message !== undefined && message !== null && message !== '';
-  const hasCounter = counter !== undefined && counter !== null && counter !== '';
-  const badgeLabel = badge === true ? 'AI 생성' : badge || null;
-
-  const describedBy =
-    [ariaDescribedBy, hasMessage && messageId, hasCounter && counterId].filter(Boolean).join(' ') || undefined;
+  const a11y = useFieldA11y({
+    id,
+    // over-limit도 에러 문구를 보여주는 상태라 Field에는 error로 넘겨요
+    status: invalid ? 'error' : 'default',
+    description,
+    showDescription,
+    error,
+    describedBy: ariaDescribedByProp,
+  });
+  const counterId = `${a11y.inputId}-counter`;
+  const ariaDescribedBy = [a11y.ariaDescribedBy, hasCounter ? counterId : undefined].filter(Boolean).join(' ') || undefined;
 
   return (
-    <div className={[styles.field, className].filter(Boolean).join(' ')} data-status={status}>
-      <div className={styles.header}>
-        <label className={styles.label} htmlFor={inputId}>
-          {label}
-        </label>
-        {indicator && <Indicator type={indicator} />}
-        {badgeLabel && (
-          <Badge type="ai" size="medium" shape="square">
-            {badgeLabel}
-          </Badge>
-        )}
-        <span className={styles.spacer} />
-        {action && (
-          <Button
-            variant="neutral-weak"
-            size="xsmall"
-            icon={action.icon}
-            onClick={action.onClick}
-            disabled={action.disabled}
-          >
-            {action.label}
-          </Button>
-        )}
-      </div>
-
+    <div className={[styles.field, className].filter(Boolean).join(' ')} style={style}>
+      <FieldHeader label={label} htmlFor={a11y.inputId} indicator={indicator} badge={badge} action={action} />
       <TextArea
         {...textAreaProps}
-        id={inputId}
-        className={textAreaClassName}
-        invalid={isError}
-        aria-describedby={describedBy}
+        {...{ ref }}
+        id={a11y.inputId}
+        invalid={invalid}
         aria-required={indicator === 'required' ? true : textAreaProps['aria-required']}
+        aria-describedby={ariaDescribedBy}
       />
-
-      {(hasMessage || hasCounter) && (
-        <div className={styles.footer}>
-          {hasMessage && (
-            <p
-              id={messageId}
-              className={[styles.message, isError && styles.critical].filter(Boolean).join(' ')}
-              aria-live={isError ? 'polite' : undefined}
-            >
-              {message}
-            </p>
-          )}
-          {hasCounter && (
-            <p
-              id={counterId}
-              className={[styles.counter, status === 'over-limit' && styles.critical].filter(Boolean).join(' ')}
-            >
-              {counter}
-            </p>
-          )}
-        </div>
-      )}
+      <FieldFooter
+        description={description}
+        descriptionId={a11y.descriptionId}
+        error={error}
+        errorId={a11y.errorId}
+        hasDescription={a11y.hasDescription}
+        hasError={a11y.hasError}
+        counter={counter}
+        counterId={counterId}
+        counterCritical={status === 'over-limit'}
+      />
     </div>
   );
 }

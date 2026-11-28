@@ -10,34 +10,46 @@ const ERROR = '핵심 요약을 입력해 주세요.';
 const meta = {
   title: 'Components/TextAreaField',
   component: TextAreaField,
-  args: {
-    label: 'label',
-    status: 'default',
-    indicator: 'required',
-    badge: true,
-    description: DESCRIPTION,
-    showDescription: true,
-    error: ERROR,
-    counter: `0 / ${MAX}자`,
-    placeholder: '플레이스홀더',
-    disabled: false,
-    action: { label: 'AI로 초안 쓰기', icon: 'ai', onClick: () => {} },
-  },
-  argTypes: {
-    status: { control: 'inline-radio', options: TEXT_AREA_FIELD_STATUSES },
-    indicator: { control: 'inline-radio', options: [undefined, ...INDICATOR_TYPES] },
-    badge: { control: 'boolean' },
-    showDescription: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    action: { control: false },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Figma TextAreaField 컴포넌트. 라벨 + TextArea + 안내/에러 + 글자 수 한 묶음이며, 라벨 줄과 안내·에러 줄은 TextInputField와 같이 쓰는 Field 부품입니다.',
+      },
+    },
   },
   decorators: [
     (Story) => (
-      <div style={{ width: 616 }}>
+      <div style={{ width: 616, maxWidth: '100%' }}>
         <Story />
       </div>
     ),
   ],
+  args: {
+    status: 'default',
+    label: 'label',
+    indicator: 'required',
+    badge: 'AI 생성',
+    action: { label: 'AI로 초안 쓰기', icon: 'ai' },
+    placeholder: '플레이스홀더',
+    description: DESCRIPTION,
+    showDescription: true,
+    error: ERROR,
+    counter: `0 / ${MAX}자`,
+    disabled: false,
+  },
+  argTypes: {
+    status: { control: 'inline-radio', options: TEXT_AREA_FIELD_STATUSES },
+    label: { control: 'text' },
+    indicator: { control: 'inline-radio', options: [undefined, ...INDICATOR_TYPES] },
+    badge: { control: 'text' },
+    action: { control: false },
+    description: { control: 'text' },
+    showDescription: { control: 'boolean' },
+    error: { control: 'text' },
+    counter: { control: 'text' },
+    disabled: { control: 'boolean' },
+  },
 } satisfies Meta<typeof TextAreaField>;
 
 export default meta;
@@ -58,9 +70,9 @@ export const Statuses: Story = {
   ),
 };
 
-/** 헤더·안내 문구를 끈 최소 형태. 글자 수는 남아요 */
+/** 헤더 옵션과 안내 문구를 끈 최소 형태. 글자 수는 남아요 */
 export const Minimal: Story = {
-  args: { indicator: undefined, badge: false, action: undefined, showDescription: false },
+  args: { indicator: undefined, badge: undefined, action: undefined, showDescription: false },
 };
 
 /**
@@ -83,7 +95,7 @@ export const Interactive: Story = {
       <TextAreaField
         {...args}
         status={status}
-        badge={fromAi}
+        badge={fromAi ? 'AI 생성' : undefined}
         error={status === 'over-limit' ? `${MAX}자 이내로 입력해 주세요.` : ERROR}
         counter={`${value.length} / ${MAX}자`}
         value={value}

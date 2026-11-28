@@ -1,0 +1,50 @@
+/* Figma: Components / TextArea (node 858:16529). TextInput과 같은 규칙 */
+
+.textarea {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  /* 내용에 맞춰 늘어나다 200을 넘으면 스크롤 */
+  min-height: 100px;
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 0;
+  padding: var(--padding-16);
+  border: 1px solid var(--border-weak);
+  border-radius: var(--round-16);
+  outline: 0;
+  background: var(--fill-neutral-weak);
+  /* has-value=true: secondary */
+  color: var(--foreground-secondary);
+  caret-color: var(--foreground-brand);
+  font: var(--font-weight-medium) var(--font-size-body2) / var(--line-height-text) var(--font-sans);
+  resize: none;
+  transition: border-color 120ms ease;
+}
+
+/* has-value=false: quaternary */
+.textarea::placeholder {
+  color: var(--foreground-quaternary);
+  opacity: 1;
+}
+
+/* state=focus (hover 없음) */
+.textarea:focus-visible,
+.textarea[data-state='focus'] {
+  border-color: var(--border-focus);
+}
+
+/* invalid=true (focus여도 빨강 유지) */
+.textarea.invalid,
+.textarea.invalid:focus-visible,
+.textarea.invalid[data-state='focus'] {
+  border-color: var(--border-critical);
+}
+
+/* disabled=true (state=default만) */
+.textarea:disabled {
+  border-color: var(--border-weak);
+  opacity: 0.4;
+  cursor: not-allowed;
+}

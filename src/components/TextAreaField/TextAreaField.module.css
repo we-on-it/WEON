@@ -1,0 +1,11 @@
+/* Figma: Components / TextAreaField (node 867:17616) */
+
+/* header · TextArea · footer를 세로로 쌓고, 너비는 부모를 따라 채웁니다 (TextInputField와 같음) */
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--gap-8);
+  width: 100%;
+  min-width: 0;
+}

@@ -111,11 +111,28 @@ export type FieldFooterProps = {
   errorId: string;
   hasDescription: boolean;
   hasError: boolean;
+  /** 오른쪽 글자 수 (예: "0 / 300자"). TextAreaField에서 써요, 생략하면 숨김 */
+  counter?: ReactNode;
+  /** 글자 수 id (aria-describedby 연결용) */
+  counterId?: string;
+  /** 글자 수를 빨강으로 (TextAreaField status=over-limit) */
+  counterCritical?: boolean;
 };
 
 /** 보일 문구가 없으면 줄째로 렌더링하지 않아 빈 간격이 생기지 않아요 */
-export function FieldFooter({ description, descriptionId, error, errorId, hasDescription, hasError }: FieldFooterProps) {
-  if (!hasDescription && !hasError) return null;
+export function FieldFooter({
+  description,
+  descriptionId,
+  error,
+  errorId,
+  hasDescription,
+  hasError,
+  counter,
+  counterId,
+  counterCritical = false,
+}: FieldFooterProps) {
+  const hasCounter = hasContent(counter);
+  if (!hasDescription && !hasError && !hasCounter) return null;
 
   return (
     <div className={styles.footer}>
@@ -123,9 +140,14 @@ export function FieldFooter({ description, descriptionId, error, errorId, hasDes
         <p id={errorId} className={`${styles.message} ${styles.error}`} aria-live="polite">
           {error}
         </p>
-      ) : (
+      ) : hasDescription ? (
         <p id={descriptionId} className={`${styles.message} ${styles.description}`}>
           {description}
+        </p>
+      ) : null}
+      {hasCounter && (
+        <p id={counterId} className={`${styles.counter} ${counterCritical ? styles.error : styles.description}`}>
+          {counter}
         </p>
       )}
     </div>
